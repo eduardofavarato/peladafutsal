@@ -6,7 +6,7 @@ function App() {
 	return (
 		<div>
 			<nav className="navbar navbar-expand navbar-dark bg-dark">
-				<a href="/pelada/standings" className="navbar-brand">
+				<a href="/pelada/" className="navbar-brand">
 					Classificação
 				</a>
 				<div className="navbar-nav mr-auto">
