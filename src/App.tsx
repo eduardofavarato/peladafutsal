@@ -6,17 +6,17 @@ function App() {
 	return (
 		<div>
 			<nav className="navbar navbar-expand navbar-dark bg-dark">
-				<a href="/standings" className="navbar-brand">
+				<a href="/pelada/standings" className="navbar-brand">
 					Classificação
 				</a>
 				<div className="navbar-nav mr-auto">
 					<li className="nav-item">
-						<Link to={"/players"} className="nav-link">
+						<Link to={"/pelada/players"} className="nav-link">
 							Jogadores
 						</Link>
 					</li>
 					<li className="nav-item">
-						<Link to={"/match"} className="nav-link">
+						<Link to={"/pelada/match"} className="nav-link">
 							Partida
 						</Link>
 					</li>
@@ -25,9 +25,9 @@ function App() {
 
 			<div className="container mt-3">
 				<Routes>
-					{/* <Route path="/" element={<Standings />} /> */}
-					<Route path="/players" element={<Players />} />
-					{/* <Route path="/match" element={<Match />} />} /> */}
+					{/* <Route path="pelada/" element={<Standings />} /> */}
+					<Route path="/pelada/players" element={<Players />} />
+					{/* <Route path="/pelada/match" element={<Match />} />} /> */}
 				</Routes>
 			</div>
 		</div>
