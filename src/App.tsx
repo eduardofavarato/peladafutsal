@@ -6,7 +6,7 @@ function App() {
 	return (
 		<div>
 			<nav className="navbar navbar-expand navbar-dark bg-dark">
-				<a href="/" className="navbar-brand">
+				<a href="/standings" className="navbar-brand">
 					Classificação
 				</a>
 				<div className="navbar-nav mr-auto">
@@ -25,7 +25,7 @@ function App() {
 
 			<div className="container mt-3">
 				<Routes>
-					{/* <Route path="/" element={<Standings />} /> */}
+					{/* <Route path="/standings" element={<Standings />} /> */}
 					<Route path="/players" element={<Players />} />
 					{/* <Route path="/match" element={<Match />} />} /> */}
 				</Routes>
