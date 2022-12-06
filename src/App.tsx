@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Link, Route, Routes } from "react-router-dom";
+import Players from "./features/players/Players";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div>
+			<nav className="navbar navbar-expand navbar-dark bg-dark">
+				<a href="/standings" className="navbar-brand">
+					Classificação
+				</a>
+				<div className="navbar-nav mr-auto">
+					<li className="nav-item">
+						<Link to={"/players"} className="nav-link">
+							Jogadores
+						</Link>
+					</li>
+					<li className="nav-item">
+						<Link to={"/match"} className="nav-link">
+							Partida
+						</Link>
+					</li>
+				</div>
+			</nav>
+
+			<div className="container mt-3">
+				<Routes>
+					{/* <Route path="/" element={<Standings />} /> */}
+					<Route path="/players" element={<Players />} />
+					{/* <Route path="/match" element={<Match />} />} /> */}
+				</Routes>
+			</div>
+		</div>
+	);
 }
 
 export default App;

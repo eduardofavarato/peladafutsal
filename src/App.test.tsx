@@ -1,9 +1,33 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+import { MemoryRouter } from "react-router-dom";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test("renders standings link", () => {
+	render(
+		<MemoryRouter>
+			<App />
+		</MemoryRouter>
+	);
+	const standings = screen.getByText(/Classificação/i);
+	expect(standings).toBeInTheDocument();
+});
+
+test("renders players link", () => {
+	render(
+		<MemoryRouter>
+			<App />
+		</MemoryRouter>
+	);
+	const players = screen.getByText(/Jogadores/i);
+	expect(players).toBeInTheDocument();
+});
+
+test("renders match link", () => {
+	render(
+		<MemoryRouter>
+			<App />
+		</MemoryRouter>
+	);
+	const match = screen.getByText(/Partida/i);
+	expect(match).toBeInTheDocument();
 });
