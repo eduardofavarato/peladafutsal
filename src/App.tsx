@@ -10,11 +10,11 @@ function App() {
 	const renderTab = () => {
 		switch (currentTab) {
 			case "standings":
-				return <div>under development ...</div>;
+				return <div>under development ..</div>;
 			case "players":
 				return <Players />;
 			case "match":
-				return <div>under development ...</div>;
+				return <div>under development ..</div>;
 			default:
 				return null;
 		}
