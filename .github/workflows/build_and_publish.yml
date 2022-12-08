@@ -36,22 +36,3 @@ jobs:
           git add -A
           git commit -m "Updates"
           git push
-  
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Deploy in EC2
-        env:
-            AWS_PRIVATE_KEY: ${{ secrets.AWS_SSH_RSA_KEY  }}
-            AWS_HOSTNAME : ${{ secrets.AWS_HOSTNAME  }}
-            AWS_USERNAME : ${{ secrets.AWS_USERNAME  }}
-            
-        run: |
-          echo "$AWS_PRIVATE_KEY" > private_key.pem && chmod 600 private_key.pem
-          ssh -o StrictHostKeyChecking=no -i "private_key.pem" ${AWS_USERNAME}@${AWS_HOSTNAME} '
-          
-            cd /home/ec2-user/pelada &&
-            git pull --rebase
-          '
