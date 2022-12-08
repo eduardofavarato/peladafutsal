@@ -10,7 +10,7 @@ const get = (id: any) => {
 };
 
 const create = (data: IPlayerData) => {
-	return http.post<IPlayerData>("/players", data);
+	return http.post<IPlayerData>("/v1/players", data);
 };
 
 const update = (id: any, data: IPlayerData) => {
