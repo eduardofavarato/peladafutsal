@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build_and_publish:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -29,12 +29,36 @@ jobs:
           token: ${{ secrets.PERSONAL_TOKEN }}
       - name: Publish pelada
         run: |
-          cp -RT code/./build release/
-          cd release
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -rf release/*
+          cp -RT code/./build release/
+          cd release
           git add -A
           git commit -m "Updates"
           git push
+  
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v23
+      - name: Deploy in EC2
+        env:
+            AWS_PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
+            AWS_HOSTNAME : ${{ secrets.AWS_HOSTNAME  }}
+            AWS_USERNAME : ${{ secrets.AWS_USERNAME  }}
+            
+        run: |
+          echo "$AWS_PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${AWS_USERNAME}@${AWS_HOSTNAME} '
+          
+            #Now we have got the access of EC2 and we will start the deploy .
+            cd /home/ec2-user/pelada &&
+            git checkout main &&
+            git fetch --all &&
+            git reset --hard origin/main &&
+            git pull origin main
+    
   
         
