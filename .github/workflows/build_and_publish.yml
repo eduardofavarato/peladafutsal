@@ -29,11 +29,10 @@ jobs:
           token: ${{ secrets.PERSONAL_TOKEN }}
       - name: Publish pelada
         run: |
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          rm -rf release/*
           cp -RT code/./build release/
           cd release
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git commit -m "Updates"
           git push
@@ -55,10 +54,5 @@ jobs:
           
             #Now we have got the access of EC2 and we will start the deploy .
             cd /home/ec2-user/pelada &&
-            git checkout main &&
-            git fetch --all &&
-            git reset --hard origin/main &&
-            git pull origin main
-    
-  
+            git pull --rebase
         
