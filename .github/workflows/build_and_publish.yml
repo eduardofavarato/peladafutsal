@@ -50,7 +50,7 @@ jobs:
             
         run: |
           echo "$AWS_PRIVATE_KEY" > private_key.pem && chmod 600 private_key.pem
-          ssh -i private_key ${AWS_USERNAME}@${AWS_HOSTNAME} '
+          ssh -i private_key.pem ${AWS_USERNAME}@${AWS_HOSTNAME} '
           
             cd /home/ec2-user/pelada &&
             git pull --rebase
