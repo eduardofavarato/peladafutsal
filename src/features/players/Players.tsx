@@ -13,7 +13,6 @@ const Players: React.FC = () => {
 		PlayerService.getAll()
 			.then((response: any) => {
 				setPlayers(response.data);
-				console.log(response.data);
 			})
 			.catch((e: Error) => {
 				console.log(e);
