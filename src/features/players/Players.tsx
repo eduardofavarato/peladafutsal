@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { ListGroup } from "react-bootstrap";
 import PlayerService from "../../services/PlayerService";
 import IPlayerData from "../../types/Player";
+import PlayerRow from "./PlayerRow";
 
-const Players: React.FC = () => {
+function Players() {
 	const [players, setPlayers] = useState<Array<IPlayerData>>([]);
 
 	useEffect(() => {
@@ -19,22 +21,34 @@ const Players: React.FC = () => {
 			});
 	};
 
+	const removePlayer = (playerName: string) => {
+		PlayerService.remove(playerName)
+			.then((response: any) => {
+				console.log(response.data);
+				if (response.statusCode === 200) {
+					setPlayers((current) => current.filter((player) => player.player_name !== playerName));
+				}
+			})
+			.catch((e: Error) => {
+				console.log(e);
+			});
+	};
+
 	return (
 		<div className="list row">
 			<div className="col-md-6">
 				<h4>Lista de Jogadores</h4>
-
-				<ul className="list-group">
+				<ListGroup>
 					{players &&
 						players.map((player, index) => (
-							<li className={"list-group-item"} key={index}>
-								{player.player_name}
-							</li>
+							<ListGroup.Item key={index}>
+								<PlayerRow player={player} removePlayer={removePlayer}></PlayerRow>
+							</ListGroup.Item>
 						))}
-				</ul>
+				</ListGroup>
 			</div>
 		</div>
 	);
-};
+}
 
 export default Players;
