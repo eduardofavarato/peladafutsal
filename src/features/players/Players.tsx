@@ -9,7 +9,7 @@ function Players() {
 
 	useEffect(() => {
 		retrievePlayers();
-	}, []);
+	}, [players]);
 
 	const retrievePlayers = () => {
 		PlayerService.getAll()
