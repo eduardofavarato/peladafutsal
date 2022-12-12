@@ -1,38 +1,38 @@
 name: build_and_publish
 
 on:
-  push:
-    branches:
-      - main
+    push:
+        branches:
+            - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          path: code
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-      - name: Build peladafutsal
-        run: |
-          cd code
-          npm ci
-          npm run build
-        env:
-          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
-      - uses: actions/checkout@v3
-        with:
-          repository: eduardofavarato/pelada
-          path: release
-          token: ${{ secrets.PERSONAL_TOKEN }}
-      - name: Publish pelada
-        run: |
-          cp -RT code/./build release/
-          cd release
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "Updates"
-          git push
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                  path: code
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: "16.x"
+            - name: Build peladafutsal
+              run: |
+                  cd code
+                  npm ci
+                  npm run build
+              env:
+                  REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+            - uses: actions/checkout@v3
+              with:
+                  repository: eduardofavarato/pelada
+                  path: release
+                  token: ${{ secrets.PERSONAL_TOKEN }}
+            - name: Publish pelada
+              run: |
+                  cp -RT code/./build release/
+                  cd release
+                  git config --local user.name "github-actions[bot]"
+                  git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  git add -A
+                  git commit -m "Updates"
+                  git push
