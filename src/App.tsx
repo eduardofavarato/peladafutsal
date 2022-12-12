@@ -1,8 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
-import Navigation from "./features/navigation/Navigation";
 import Players from "./features/players/Players";
 import { Route, Routes } from "react-router-dom";
+import { Navigation } from "./features/navigation/Navigation";
 
 function App() {
 	return (

@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.jpg";
 
-function Navigation() {
+export function Navigation() {
 	return (
 		<Container fluid className="p-0">
 			<Navbar collapseOnSelect bg="dark" variant="dark" className="px-2 p-sm-2" id="navbar-collapse-id" expand="sm">
@@ -39,5 +39,3 @@ function Navigation() {
 		</Container>
 	);
 }
-
-export default Navigation;
