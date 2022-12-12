@@ -1,12 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import Navigation from "./Navigation";
 
-const stubGenericFunction = (): void => {
-	return;
-};
-
 test("renders navbar links", () => {
-	render(<Navigation currentTab="" setCurrentTab={stubGenericFunction} />);
+	render(<Navigation />);
 
 	const standings = screen.getByText(/Classificação/i);
 	const players = screen.getByText(/Jogadores/i);

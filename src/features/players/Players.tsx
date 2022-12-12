@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ListGroup } from "react-bootstrap";
+import { Container, ListGroup } from "react-bootstrap";
 import PlayerService from "../../services/PlayerService";
 import IPlayerData from "../../types/Player";
 import PlayerRow from "./PlayerRow";
@@ -37,22 +37,24 @@ function Players() {
 	};
 
 	return (
-		<div className="list row">
-			<div className="col-lg-6">
-				<h2 className="my-4 ml-2">
-					Lista de Jogadores
-					<AddPlayer addPlayer={addPlayer}></AddPlayer>
-				</h2>
-				<ListGroup>
-					{players &&
-						players.map((player, index) => (
-							<ListGroup.Item key={index} className="p-1">
-								<PlayerRow player={player} removePlayer={removePlayer}></PlayerRow>
-							</ListGroup.Item>
-						))}
-				</ListGroup>
+		<Container fluid>
+			<div className="list row">
+				<div className="col-lg-6">
+					<h2 className="my-4 ml-2">
+						Lista de Jogadores
+						<AddPlayer addPlayer={addPlayer}></AddPlayer>
+					</h2>
+					<ListGroup>
+						{players &&
+							players.map((player, index) => (
+								<ListGroup.Item key={index} className="p-1">
+									<PlayerRow player={player} removePlayer={removePlayer}></PlayerRow>
+								</ListGroup.Item>
+							))}
+					</ListGroup>
+				</div>
 			</div>
-		</div>
+		</Container>
 	);
 }
 
