@@ -1,8 +1,9 @@
 import { render, screen } from "@testing-library/react";
-import Navigation from "./Navigation";
+import Header from "./Header";
+import { MemoryRouter } from "react-router-dom";
 
 test("renders navbar links", () => {
-	render(<Navigation />);
+	render(<Header />, { wrapper: MemoryRouter });
 
 	const standings = screen.getByText(/Classificação/i);
 	const players = screen.getByText(/Jogadores/i);

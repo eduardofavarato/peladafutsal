@@ -2,13 +2,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 import Players from "./features/players/Players";
 import { Route, Routes } from "react-router-dom";
-import { Navigation } from "./features/navigation/Navigation";
+import Header from "./features/header/Header";
 
 function App() {
 	return (
 		<div>
 			<Container fluid className="p-0">
-				<Navigation />
+				<Header />
 			</Container>
 
 			<Routes>

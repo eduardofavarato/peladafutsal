@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.jpg";
 
-export function Navigation() {
+export default function Header() {
 	return (
 		<Container fluid className="p-0">
 			<Navbar collapseOnSelect bg="dark" variant="dark" className="px-2 p-sm-2" id="navbar-collapse-id" expand="sm">
