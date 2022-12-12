@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { Container } from "react-bootstrap";
-import Navigation from "./components/Navigation";
+import Navigation from "./features/navigation/Navigation";
 import Players from "./features/players/Players";
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
 			<Container fluid className="p-0">
 				<Navigation currentTab={currentTab} setCurrentTab={setCurrentTab}></Navigation>
 			</Container>
-			<Container fluid className="mt-2">
+			<Container fluid>
 				<main>{renderTab()}</main>
 			</Container>
 		</div>

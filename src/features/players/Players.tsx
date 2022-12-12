@@ -1,47 +1,52 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { ListGroup } from "react-bootstrap";
 import PlayerService from "../../services/PlayerService";
 import IPlayerData from "../../types/Player";
 import PlayerRow from "./PlayerRow";
+import AddPlayer from "./AddPlayer";
 
 function Players() {
 	const [players, setPlayers] = useState<Array<IPlayerData>>([]);
 
 	useEffect(() => {
-		retrievePlayers();
-	}, [players]);
-
-	const retrievePlayers = () => {
-		PlayerService.getAll()
-			.then((response: any) => {
-				setPlayers(response.data);
-			})
-			.catch((e: Error) => {
-				console.log(e);
-			});
-	};
+		PlayerService.getAll(setPlayers);
+	}, []);
 
 	const removePlayer = (playerName: string) => {
-		PlayerService.remove(playerName)
-			.then((response: any) => {
-				console.log(response.data);
-				if (response.statusCode === 200) {
-					setPlayers((current) => current.filter((player) => player.player_name !== playerName));
-				}
-			})
-			.catch((e: Error) => {
-				console.log(e);
-			});
+		const onSuccess = (response: any) => {
+			if (response.status === 200) {
+				setPlayers((players) => players.filter((player) => player.player_name !== playerName));
+			}
+		};
+
+		PlayerService.remove(playerName, onSuccess);
+	};
+
+	const addPlayer = (newPlayerName: string) => {
+		const newPlayer: IPlayerData = {
+			player_name: newPlayerName.toUpperCase(),
+		};
+
+		const onSuccess = (response: any) => {
+			if (response.status === 200) {
+				setPlayers((players) => [newPlayer, ...players]);
+			}
+		};
+
+		PlayerService.create(newPlayer, onSuccess);
 	};
 
 	return (
 		<div className="list row">
-			<div className="col-md-6">
-				<h4>Lista de Jogadores</h4>
+			<div className="col-lg-6">
+				<h2 className="my-4 ml-2">
+					Lista de Jogadores
+					<AddPlayer addPlayer={addPlayer}></AddPlayer>
+				</h2>
 				<ListGroup>
 					{players &&
 						players.map((player, index) => (
-							<ListGroup.Item key={index}>
+							<ListGroup.Item key={index} className="p-1">
 								<PlayerRow player={player} removePlayer={removePlayer}></PlayerRow>
 							</ListGroup.Item>
 						))}

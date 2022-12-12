@@ -2,6 +2,8 @@ import { Button } from "react-bootstrap";
 import IPlayerData from "../../types/Player";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import "./PlayerRow.css";
+import { userHasAccess } from "../../util/sec";
 
 interface PlayerRowProps {
 	player: IPlayerData;
@@ -12,11 +14,17 @@ function PlayerRow(props: PlayerRowProps) {
 	const playerName = props.player.player_name;
 	const { removePlayer } = props;
 
+	const handleRemovePlayer = (playerName: string) => {
+		if (userHasAccess()) {
+			removePlayer(playerName);
+		}
+	};
+
 	return (
-		<div>
+		<div className="player-row ml-2 mr-1x">
 			{playerName}
 			{
-				<Button onClick={() => removePlayer(playerName)} className="float-right btn-danger">
+				<Button onClick={() => handleRemovePlayer(playerName)} className="float-right btn-danger">
 					<FontAwesomeIcon icon={faTrashCan} />
 				</Button>
 			}
