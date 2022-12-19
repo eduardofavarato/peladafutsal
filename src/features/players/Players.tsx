@@ -18,8 +18,15 @@ function Players() {
 				setPlayers((players) => players.filter((player) => player.player_name !== playerName));
 			}
 		};
+		const onError = (response: any) => {
+			if (response.response.status === 500) {
+				if (response.response.data.includes("match_player_player_name_fkey")) {
+					alert("Não é possível excluir um jogador que já jogou partidas.");
+				}
+			}
+		};
 
-		PlayerService.remove(playerName, onSuccess);
+		PlayerService.remove(playerName, onSuccess, onError);
 	};
 
 	const addPlayer = (newPlayerName: string) => {
