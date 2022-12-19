@@ -20,6 +20,7 @@ CREATE TABLE match_player(
    foreign key (player_name) references player(player_name)
 );	
 
+DROP VIEW IF EXISTS view_standings;
 CREATE VIEW view_standings AS 
 SELECT
 	player_name,
@@ -28,7 +29,7 @@ SELECT
 	total_wins, 
 	total_losses, 
 	total_draws,
-	CAST(total_points/(total_games*3.00)*100.00 AS NUMERIC(5,2)) AS performance,
+	COALESCE(CAST(total_points/(NULLIF(total_games,0)*3.00)*100.00 AS NUMERIC(5,2)), 0) AS performance,
 	total_goals
 FROM (
 	SELECT 
@@ -42,16 +43,18 @@ FROM (
 
 	FROM (
 		SELECT 
-			player_name,
+			player.player_name,
 			COUNT(match.match_id) AS total_games,
 			COUNT(match.match_id) FILTER (WHERE winner = team) AS total_wins, 
 			COUNT(match.match_id) FILTER (WHERE winner <> team AND winner IS NOT NULL) AS total_losses, 
 			COUNT(match.match_id) FILTER (WHERE winner is null) AS total_draws, 
-			SUM(goals_scored) AS total_goals
+			SUM(COALESCE(goals_scored, 0)) AS total_goals
 		FROM match
 		INNER JOIN match_player
 			ON match.match_id = match_player.match_id
-		GROUP BY player_name
+		RIGHT JOIN player
+			ON match_player.player_name = player.player_name
+		GROUP BY player.player_name
 	) sub_2
 ) sub_1
 ORDER BY total_points DESC, total_games DESC, performance DESC, total_wins DESC, total_goals DESC, player_name;
