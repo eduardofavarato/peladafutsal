@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import IPlayerData from "../../types/Player";
+import IPlayerData from "../../types/Players";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import "./PlayerRow.css";

@@ -1,5 +1,5 @@
 import http from "../http-common";
-import IPlayerData from "../types/Player";
+import IPlayerData from "../types/Players";
 
 const processApiCall = (httpCall: any, url: string, data?: any, successCallback?: any, errorCallback?: any) => {
 	httpCall(url, data)

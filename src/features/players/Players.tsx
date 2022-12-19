@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Container, ListGroup } from "react-bootstrap";
 import PlayerService from "../../services/PlayerService";
-import IPlayerData from "../../types/Player";
+import IPlayerData from "../../types/Players";
 import PlayerRow from "./PlayerRow";
 import AddPlayer from "./AddPlayer";
 
