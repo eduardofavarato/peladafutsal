@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Container, ListGroup } from "react-bootstrap";
 import PlayerService from "../../services/PlayerService";
-import IPlayerData from "../../types/Players";
 import PlayerRow from "./PlayerRow";
 import AddPlayer from "./AddPlayer";
+import { IPlayerData } from "../../types/Players";
 
 function Players() {
 	const [players, setPlayers] = useState<Array<IPlayerData>>([]);

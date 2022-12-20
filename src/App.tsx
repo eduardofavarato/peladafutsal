@@ -4,6 +4,7 @@ import Players from "./features/players/Players";
 import { Route, Routes } from "react-router-dom";
 import Header from "./features/header/Header";
 import Standings from "./features/standings/Standings";
+import Match from "./features/match/Match";
 
 function App() {
 	return (
@@ -15,7 +16,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Standings />} />
 				<Route path="/players" element={<Players />} />
-				<Route path="/match" element={<div>under development ...</div>} />
+				<Route path="/match" element={<Match />} />
 			</Routes>
 		</div>
 	);

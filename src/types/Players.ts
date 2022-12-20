@@ -1,3 +1,3 @@
-export default interface IPlayerData {
+export interface IPlayerData {
 	player_name: string;
 }

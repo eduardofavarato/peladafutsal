@@ -1,4 +1,4 @@
-export default interface IPlayerStatsData {
+export interface IPlayerStatsData {
 	player_name: string;
 	total_points: string;
 	total_games: string;

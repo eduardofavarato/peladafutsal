@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
 import StandingsService from "../../services/StandingsService";
-import IPlayerStatsData from "../../types/Standings";
+import { IPlayerStatsData } from "../../types/Standings";
 import "./Standings.css";
 
 function Standings() {
