@@ -5,11 +5,10 @@ import { userHasAccess } from "../../util/sec";
 
 interface CreateMatchProps {
 	createMatch: () => void;
-	invisible?: boolean;
 }
 
 function CreateMatch(props: CreateMatchProps) {
-	const { createMatch, invisible } = props;
+	const { createMatch } = props;
 
 	const handleCreateMatch = () => {
 		if (userHasAccess()) {
@@ -22,9 +21,9 @@ function CreateMatch(props: CreateMatchProps) {
 	};
 
 	return (
-		<div className="pt-1">
+		<div className="text-center mt-5">
 			{
-				<Button onClick={() => handleCreateMatch()} className={`px-2 btn-primary ${invisible ? "d-none" : ""}`}>
+				<Button onClick={() => handleCreateMatch()} className={`px-2 w-100 btn-primary`}>
 					<FontAwesomeIcon icon={faPlus} /> <b>Criar Partida</b>
 				</Button>
 			}

@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { userHasAccess } from "../../util/sec";
 import { isPlayerNameValid } from "./validations";
+import "./AddPlayer.css";
+import { ErrorMessages } from "../../util/constants";
 
 interface AddPlayerProps {
 	addPlayer: (playerName: string) => void;
@@ -20,7 +22,7 @@ function AddPlayer(props: AddPlayerProps) {
 			}
 
 			if (!isPlayerNameValid(playerName)) {
-				return alert("Nome inválido");
+				return alert(ErrorMessages.INVALID_NAME);
 			}
 
 			addPlayer(playerName);
@@ -28,13 +30,9 @@ function AddPlayer(props: AddPlayerProps) {
 	};
 
 	return (
-		<div className="float-right ml-2 mr-1x pt-1">
-			{
-				<Button onClick={() => handleAddPlayer()} className="float-right mr-1 px-4 btn-primary">
-					<FontAwesomeIcon icon={faUserPlus} />
-				</Button>
-			}
-		</div>
+		<Button onClick={() => handleAddPlayer()} className="add-player-button btn-primary">
+			<FontAwesomeIcon icon={faUserPlus} />
+		</Button>
 	);
 }
 

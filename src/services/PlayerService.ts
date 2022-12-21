@@ -4,7 +4,6 @@ import { IPlayerData } from "../types/Players";
 const processApiCall = (httpCall: any, url: string, data?: any, successCallback?: any, errorCallback?: any) => {
 	httpCall(url, data)
 		.then((response: any) => {
-			console.log(response);
 			successCallback && successCallback(response);
 		})
 		.catch((e: Error) => {

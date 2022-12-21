@@ -1,3 +1,34 @@
+/* Smartphones */
 .player-row {
-	line-height: 38px;
+	font-weight: 500;
+	font-size: 28px;
+	vertical-align: middle;
+}
+
+.player-name-column {
+	border-right: none;
+	padding-left: 15px !important;
+}
+
+.remove-button-column {
+	border-left: none;
+}
+
+.remove-button {
+	font-size: x-large;
+	padding: 10px 25px;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+	.player-row {
+		font-weight: 500;
+		font-size: x-large;
+		vertical-align: middle;
+	}
+
+	.remove-button {
+		font-size: x-large;
+		padding: 5px 20px;
+	}
 }

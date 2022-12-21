@@ -1,16 +1,22 @@
 import { useState, useEffect } from "react";
-import { Container, ListGroup } from "react-bootstrap";
+import { Container, Table } from "react-bootstrap";
 import PlayerService from "../../services/PlayerService";
 import PlayerRow from "./PlayerRow";
 import AddPlayer from "./AddPlayer";
 import { IPlayerData } from "../../types/Players";
 import { ErrorMessages } from "../../util/constants";
+import Loading from "../loading/Loading";
+import "./Player.css";
 
 function Players() {
+	const [loading, setLoading] = useState<boolean>(true);
 	const [players, setPlayers] = useState<Array<IPlayerData>>([]);
 
 	useEffect(() => {
-		PlayerService.getAll(setPlayers);
+		PlayerService.getAll((data: any) => {
+			setPlayers(data);
+			setLoading(false);
+		});
 	}, []);
 
 	const removePlayer = (playerName: string) => {
@@ -43,25 +49,42 @@ function Players() {
 			}
 		};
 
-		PlayerService.create(newPlayer, onSuccess);
+		const onError = (response: any) => {
+			if (response.response.status === 500) {
+				if (response.response.data.includes("player_pkey")) {
+					alert(ErrorMessages.CANNOT_ADD_PLAYERS_WITH_SAME_NAME);
+				}
+			} else {
+				alert(ErrorMessages.GENERIC);
+			}
+		};
+
+		PlayerService.create(newPlayer, onSuccess, onError);
+	};
+
+	const renderPlayers = () => {
+		if (loading) {
+			return;
+		}
+
+		return (
+			<Table className="players-table" size="sm" bordered responsive striped>
+				<tbody>{players && players.map((player, index) => <PlayerRow index={index} player={player} removePlayer={removePlayer}></PlayerRow>)}</tbody>
+			</Table>
+		);
 	};
 
 	return (
 		<Container fluid>
 			<div className="list row">
-				<div className="col-lg-6">
-					<h2 className="my-4 ml-2">
-						Lista de Jogadores
-						<AddPlayer addPlayer={addPlayer}></AddPlayer>
-					</h2>
-					<ListGroup>
-						{players &&
-							players.map((player, index) => (
-								<ListGroup.Item key={index} className="p-1">
-									<PlayerRow player={player} removePlayer={removePlayer}></PlayerRow>
-								</ListGroup.Item>
-							))}
-					</ListGroup>
+				<div className="col">
+					<div className="title-container my-3 ms-2">
+						<div className="title-element">Lista de Jogadores</div>
+						<div className="title-element title-button">
+							<AddPlayer addPlayer={addPlayer}></AddPlayer>
+						</div>
+					</div>
+					<Loading loading={loading}>{renderPlayers()}</Loading>
 				</div>
 			</div>
 		</Container>

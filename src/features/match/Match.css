@@ -1,5 +1,5 @@
-.table th,
-td {
+.match-table > th,
+.match-table > td {
 	text-align: center;
 }
 

@@ -10,7 +10,7 @@ export default function Header() {
 			<Navbar collapseOnSelect bg="dark" variant="dark" className="px-2 p-sm-2" id="navbar-collapse-id" expand="sm">
 				<Container>
 					<Navbar.Brand as={Link} to="/" className="mb-0 h1">
-						<img src={logo} width="30" height="30" className="img-fluid d-inline-block align-top rounded-circle mr-2" alt=""></img>
+						<img src={logo} width="30" height="30" className="img-fluid d-inline-block align-center rounded-circle me-2" alt=""></img>
 						Pelada Futsal
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="responsive-navbar-nav px-3 px-sm-1 px-md-0" />
