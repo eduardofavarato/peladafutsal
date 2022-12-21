@@ -1,5 +1,5 @@
 import http from "../http-common";
-import { IMatchEnd, IAddMatchPlayer } from "../types/Match";
+import { IAddMatchPlayer } from "../types/Match";
 
 const processApiCall = (httpCall: any, url: string, data?: any, successCallback?: any, errorCallback?: any, onFinally?: any) => {
 	httpCall(url, data)
@@ -30,8 +30,8 @@ const addGoal = (matchId: number, successCallback?: any, errorCallback?: any, on
 	return processApiCall(http.post, `/v1/match/${matchId}/addGoal`, null, successCallback, errorCallback, onFinally);
 };
 
-const end = (matchId: number, data: IMatchEnd, successCallback?: any, errorCallback?: any, onFinally?: any) => {
-	return processApiCall(http.post, `/v1/match/${matchId}/end`, data, successCallback, errorCallback, onFinally);
+const end = (matchId: number, successCallback?: any, errorCallback?: any, onFinally?: any) => {
+	return processApiCall(http.post, `/v1/match/${matchId}/end`, null, successCallback, errorCallback, onFinally);
 };
 
 const reopen = (matchId: number, successCallback?: any, errorCallback?: any, onFinally?: any) => {

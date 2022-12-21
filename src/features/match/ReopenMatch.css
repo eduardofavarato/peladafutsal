@@ -1,0 +1,13 @@
+/* Smartphones */
+.end-match-button {
+	font-size: x-large;
+	padding: 10px 50px;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+	.end-match-button {
+		font-size: x-large;
+		padding: 5px 20px;
+	}
+}

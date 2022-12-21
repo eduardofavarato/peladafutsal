@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Alert, Button, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import MatchService from "../../services/MatchService";
 import { IMatch } from "../../types/Match";
 import CreateMatch from "./CreateMatch";
@@ -9,6 +9,8 @@ import MatchDetails from "./MatchDetails";
 import Loading from "../loading/Loading";
 import { extractDateFromMatch } from "../../util/dates";
 import ErrorAlert from "../error-alert/ErrorAlert";
+import EndMatch from "./EndMatch";
+import ReopenMatch from "./ReopenMatch";
 
 function Match() {
 	const [error, setError] = useState<boolean>(false);
@@ -17,19 +19,23 @@ function Match() {
 
 	const matchDate = extractDateFromMatch(match);
 
-	useEffect(() => {
+	const fetchTodaysMatch = () => {
 		const handleError = (error: any) => {
 			if (error && error.response && error.response.status === 404) return;
 			setError(true);
 		};
 
 		MatchService.getTodaysMatch(setMatch, handleError, () => setLoading(false));
+	};
+
+	useEffect(() => {
+		fetchTodaysMatch();
 	}, []);
 
 	const createMatch = () => {
 		const onSuccess = (response: any) => {
 			if (response.status === 200) {
-				MatchService.getTodaysMatch(setMatch);
+				fetchTodaysMatch();
 			}
 		};
 
@@ -46,19 +52,61 @@ function Match() {
 		MatchService.create(onSuccess, onError);
 	};
 
-	const handleError = () => {
+	const endMatch = () => {
+		if (!match) return;
+
+		const onSuccess = (response: any) => {
+			if (response.status === 200) {
+				fetchTodaysMatch();
+			}
+		};
+
+		const onError = (response: any) => {
+			alert(ErrorMessages.GENERIC);
+		};
+
+		MatchService.end(match.match_id, onSuccess, onError);
+	};
+
+	const reopenMatch = () => {
+		if (!match) return;
+
+		const onSuccess = (response: any) => {
+			if (response.status === 200) {
+				fetchTodaysMatch();
+			}
+		};
+
+		const onError = (response: any) => {
+			alert(ErrorMessages.GENERIC);
+		};
+
+		MatchService.reopen(match.match_id, onSuccess, onError);
+	};
+
+	const Error = () => {
 		return error && <ErrorAlert dismiss={() => setError(false)}></ErrorAlert>;
 	};
 
-	const renderTitle = () => {
-		if (!match) {
-			return <CreateMatch createMatch={createMatch}></CreateMatch>;
-		}
-
-		return <h2>{`Partida: ${matchDate && matchDate.formattedDate()}`}</h2>;
+	const Title = () => {
+		return (
+			<div className="title-container my-3 ms-2">
+				<div className="title-element">{`Partida: ${matchDate ? matchDate.formattedDate() : ""}`}</div>
+				{!match && (
+					<div className="title-element title-button">
+						<CreateMatch createMatch={createMatch}></CreateMatch>
+					</div>
+				)}
+				{isMatchEnded() && (
+					<div className="title-element title-ended">
+						Encerrada
+					</div>
+				)}
+			</div>
+		);
 	};
 
-	const renderMatch = () => {
+	const renderMatchDetails = () => {
 		if (loading) {
 			return;
 		}
@@ -70,17 +118,36 @@ function Match() {
 		return <MatchDetails match={match}></MatchDetails>;
 	};
 
+	const renderEndMatch = () => {
+		return (
+			<div className="text-center">
+				<EndMatch endMatch={endMatch}></EndMatch>
+			</div>
+		);
+	};
+
+	const renderReopenMatch = () => {
+		return (
+			<div className="text-center">
+				<ReopenMatch reopenMatch={reopenMatch}></ReopenMatch>
+			</div>
+		);
+	};
+
+	const isMatchEnded = () => {
+		return match && match.is_ended;
+	};
+
 	return (
 		<Container fluid>
 			<div className="list row">
-				<div className="col-lg-6">
-					<div className="my-3 ps-2">
-						<Loading loading={loading}>
-							{renderTitle()}
-							{handleError()}
-							{renderMatch()}
-						</Loading>
-					</div>
+				<div className="col">
+					<Loading loading={loading}>
+						{Error()}
+						{Title()}
+						{renderMatchDetails()}
+						{isMatchEnded() ? renderReopenMatch() : renderEndMatch()}
+					</Loading>
 				</div>
 			</div>
 		</Container>

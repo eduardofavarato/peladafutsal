@@ -1,6 +1,7 @@
 export namespace Colors {
 	export const BLACK = "#000";
 	export const GRAY = "#676767";
+	export const WINE = "#722f37";
 	export const WHITE_0_8 = "rgba(255,255,255,0.8)";
 }
 

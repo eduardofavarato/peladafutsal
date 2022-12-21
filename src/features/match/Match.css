@@ -1,3 +1,4 @@
+/* Smartphones */
 .match-table > th,
 .match-table > td {
 	text-align: center;
@@ -5,4 +6,54 @@
 
 .top-2 {
 	background-color: darkseagreen !important;
+}
+
+.title-container {
+	font-size: 36px;
+	font-weight: 600;
+	text-align: center;
+}
+
+.title-button {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.title-ended {
+	background-color: darkred;
+	border-radius: 3px;
+	color: white;
+	font-size: small;
+	margin-left: 30%;
+	margin-right: 30%;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+	.title-container {
+		font-size: xx-large;
+		font-weight: 600;
+		text-align: left;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: center;
+	}
+
+	.title-button {
+		text-align: end;
+		padding-bottom: 6px;
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+
+	.title-ended {
+		background-color: darkred;
+		border-radius: 3px;
+		color: white;
+		font-size: small;
+		padding: 6px;
+		text-align: center;
+		margin-left: 50%;
+		margin-right: unset;
+	}
 }

@@ -7,8 +7,8 @@ export interface IMatchPlayer {
 export interface IMatch {
 	match_id: number;
 	match_date: string;
-	winner: boolean;
 	is_ended: boolean;
+	winner: boolean;
 	players: Array<IMatchPlayer>;
 }
 
@@ -19,8 +19,4 @@ export interface IAddMatchPlayer {
 
 export interface IMatchGoal {
 	player_name: string;
-}
-
-export interface IMatchEnd {
-	winner: boolean;
 }

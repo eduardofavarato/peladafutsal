@@ -2,6 +2,7 @@ import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { userHasAccess } from "../../util/sec";
+import "./CreateMatch.css";
 
 interface CreateMatchProps {
 	createMatch: () => void;
@@ -21,13 +22,9 @@ function CreateMatch(props: CreateMatchProps) {
 	};
 
 	return (
-		<div className="text-center mt-5">
-			{
-				<Button onClick={() => handleCreateMatch()} className={`px-2 w-100 btn-primary`}>
-					<FontAwesomeIcon icon={faPlus} /> <b>Criar Partida</b>
-				</Button>
-			}
-		</div>
+		<Button onClick={() => handleCreateMatch()} className={`create-match-button btn-primary`}>
+			<FontAwesomeIcon icon={faPlus} /> <b>Criar Partida</b>
+		</Button>
 	);
 }
 
