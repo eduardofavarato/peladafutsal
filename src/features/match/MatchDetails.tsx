@@ -8,7 +8,7 @@ interface MatchDetailsProps {
 function MatchDetails(props: MatchDetailsProps) {
 	const { match } = props;
 
-	return <></>;
+	return <div>{match && match.match_date}</div>;
 }
 
 export default MatchDetails;
