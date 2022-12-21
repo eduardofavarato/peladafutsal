@@ -4,6 +4,7 @@ import PlayerService from "../../services/PlayerService";
 import PlayerRow from "./PlayerRow";
 import AddPlayer from "./AddPlayer";
 import { IPlayerData } from "../../types/Players";
+import { ErrorMessages } from "../../util/constants";
 
 function Players() {
 	const [players, setPlayers] = useState<Array<IPlayerData>>([]);
@@ -21,8 +22,10 @@ function Players() {
 		const onError = (response: any) => {
 			if (response.response.status === 500) {
 				if (response.response.data.includes("match_player_player_name_fkey")) {
-					alert("Não é possível excluir um jogador que já jogou partidas.");
+					alert(ErrorMessages.CANNOT_DELETE_PLAYER_WITH_MATCHES);
 				}
+			} else {
+				alert(ErrorMessages.GENERIC);
 			}
 		};
 

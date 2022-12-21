@@ -5,6 +5,7 @@ import { IMatch } from "../../types/Match";
 import { extractDateFromMatch } from "../../util/dates";
 import CreateMatch from "./CreateMatch";
 import "./Match.css";
+import { ErrorMessages } from "../../util/constants";
 
 function Match() {
 	const [match, setMatch] = useState<IMatch>();
@@ -25,8 +26,10 @@ function Match() {
 		const onError = (response: any) => {
 			if (response.response.status === 400) {
 				if (response.response.data.includes("Max of one match per day")) {
-					alert("Não é possível criar mais de uma partida por dia");
+					alert(ErrorMessages.MAX_ONE_MATCH_PER_DAY);
 				}
+			} else {
+				alert(ErrorMessages.GENERIC);
 			}
 		};
 
