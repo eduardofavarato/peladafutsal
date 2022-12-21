@@ -69,7 +69,7 @@ function Players() {
 
 		return (
 			<Table className="players-table" size="sm" bordered responsive striped>
-				<tbody>{players && players.map((player, index) => <PlayerRow index={index} player={player} removePlayer={removePlayer}></PlayerRow>)}</tbody>
+				<tbody>{players && players.map((player, index) => <PlayerRow key={index} player={player} removePlayer={removePlayer}></PlayerRow>)}</tbody>
 			</Table>
 		);
 	};
