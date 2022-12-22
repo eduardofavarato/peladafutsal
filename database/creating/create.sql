@@ -4,7 +4,7 @@ CREATE TABLE player(
 
 CREATE TABLE match(
 	match_id int generated always as identity(start with 1 increment by 1) primary key,
-	match_date date not null default NOW() unique,
+	match_date date not null default DATE(NOW() AT TIME ZONE 'America/Sao_Paulo') unique,
 	winner boolean default null, --0 - azul | 1 - vermelho
 	is_ended boolean default FALSE --0 - não | 1 - sim
 );
