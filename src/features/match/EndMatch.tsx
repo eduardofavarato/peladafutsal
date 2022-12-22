@@ -37,9 +37,11 @@ function EndMatch(props: EndMatchProps) {
 	};
 
 	return (
-		<Button variant="danger" onClick={() => handleEndMatch()} className={`end-match-button`}>
-			<b>Encerrar Partida</b>
-		</Button>
+		<div className="end-match-container">
+			<Button variant="danger" onClick={() => handleEndMatch()} className={`end-match-button`}>
+				<b>Encerrar Partida</b>
+			</Button>
+		</div>
 	);
 }
 

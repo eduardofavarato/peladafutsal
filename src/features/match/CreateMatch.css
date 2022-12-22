@@ -4,6 +4,10 @@
 	padding: 10px 50px;
 }
 
+.create-match-container{
+	text-align: center;
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
 	.create-match-button {

@@ -17,4 +17,6 @@ export namespace ErrorMessages {
 export namespace Labels {
 	export const LOADING = "Carregando";
 	export const PASSWORD = "Senha:";
+	export const TEAM_BLUE = "Time Azul";
+	export const TEAM_RED = "Time Vermelho";
 }

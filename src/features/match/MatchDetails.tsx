@@ -1,5 +1,6 @@
 import { IMatch } from "../../types/Match";
-import "./Match.css";
+import "./MatchDetails.css";
+import MatchTeam from "./MatchTeam";
 
 interface MatchDetailsProps {
 	match: IMatch;
@@ -7,8 +8,15 @@ interface MatchDetailsProps {
 
 function MatchDetails(props: MatchDetailsProps) {
 	const { match } = props;
+	const blueTeamPlayers = match.players.filter((player) => player.team === false);
+	const redTeamPlayers = match.players.filter((player) => player.team === true);
 
-	return <div>{match && match.match_date}</div>;
+	return (
+		<div className="match-details-container">
+			<MatchTeam color="blue" players={blueTeamPlayers}></MatchTeam>
+			<MatchTeam color="red" players={redTeamPlayers}></MatchTeam>
+		</div>
+	);
 }
 
 export default MatchDetails;

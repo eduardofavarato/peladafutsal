@@ -37,9 +37,11 @@ function ReopenMatch(props: ReopenMatchProps) {
 	};
 
 	return (
-		<Button variant="warning" onClick={() => handleReopenMatch()} className={`reopen-match-button`}>
-			<b>Reabrir Partida</b>
-		</Button>
+		<div className="reopen-match-container">
+			<Button variant="warning" onClick={() => handleReopenMatch()} className={`reopen-match-button`}>
+				<b>Reabrir Partida</b>
+			</Button>
+		</div>
 	);
 }
 

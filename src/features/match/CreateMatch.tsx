@@ -44,9 +44,11 @@ function CreateMatch(props: CreateMatchProps) {
 	};
 
 	return (
-		<Button variant="primary" onClick={() => handleCreateMatch()} className={`create-match-button`}>
-			<FontAwesomeIcon icon={faPlus} /> <b>Criar Partida</b>
-		</Button>
+		<div className="create-match-container">
+			<Button variant="primary" onClick={() => handleCreateMatch()} className={`create-match-button`}>
+				<FontAwesomeIcon icon={faPlus} /> <b>Criar Partida</b>
+			</Button>
+		</div>
 	);
 }
 

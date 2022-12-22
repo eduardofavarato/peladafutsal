@@ -31,11 +31,11 @@ function Match() {
 		fetchTodaysMatch();
 	}, []);
 
-	const Error = () => {
+	const renderError = () => {
 		return error && <ErrorAlert dismiss={() => setError(false)}></ErrorAlert>;
 	};
 
-	const Title = () => {
+	const renderTitle = () => {
 		return (
 			<div className="title-container my-2 ms-2">
 				<div className="title-element">{`Partida: ${matchDate ? matchDate.formattedDate() : ""}`}</div>
@@ -90,8 +90,8 @@ function Match() {
 			<div className="list row">
 				<div className="col">
 					<Loading loading={loading}>
-						{Error()}
-						{Title()}
+						{renderError()}
+						{renderTitle()}
 						{renderMatchDetails()}
 						{isMatchEnded() ? renderReopenMatch() : renderEndMatch()}
 					</Loading>

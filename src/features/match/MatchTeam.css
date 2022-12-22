@@ -1,0 +1,15 @@
+/* Smartphones */
+.match-team-container {
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+.match-team-name {
+	text-align: center;
+	font-weight: 600;
+	font-size: large;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+}
