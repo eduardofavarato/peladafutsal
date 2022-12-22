@@ -4,6 +4,14 @@
 	margin-bottom: 10px;
 }
 
+.match-team-container-blue {
+	background-color: rgba(0, 150, 255, 0.4);
+}
+
+.match-team-container-red {
+	background-color: rgba(200, 0, 0, 0.4);
+}
+
 .match-team-name {
 	text-align: center;
 	font-weight: 600;

@@ -13,7 +13,7 @@ function MatchTeam(props: MatchTeamProps) {
 	const teamName = color === "blue" ? Labels.TEAM_BLUE : Labels.TEAM_RED;
 
 	return (
-		<div className={`match-team-container ${color}`}>
+		<div className={`match-team-container match-team-container-${color}`}>
 			<div className="match-team-name">{teamName}</div>
 			<div>
 				{players.map((player, index) => (
