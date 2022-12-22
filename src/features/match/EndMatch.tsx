@@ -1,13 +1,30 @@
 import { Button } from "react-bootstrap";
+import MatchService from "../../services/MatchService";
+import { ErrorMessages } from "../../util/constants";
 import { userHasAccess } from "../../util/sec";
 import "./EndMatch.css";
 
 interface EndMatchProps {
-	endMatch: () => void;
+	matchId: number;
+	onEndMatchSuccess: () => void;
 }
 
 function EndMatch(props: EndMatchProps) {
-	const { endMatch } = props;
+	const { matchId, onEndMatchSuccess } = props;
+
+	const endMatch = () => {
+		const onSuccess = (response: any) => {
+			if (response.status === 200) {
+				onEndMatchSuccess();
+			}
+		};
+
+		const onError = (response: any) => {
+			alert(ErrorMessages.GENERIC);
+		};
+
+		MatchService.end(matchId, onSuccess, onError);
+	};
 
 	const handleEndMatch = () => {
 		if (userHasAccess()) {
@@ -20,7 +37,7 @@ function EndMatch(props: EndMatchProps) {
 	};
 
 	return (
-		<Button onClick={() => handleEndMatch()} className={`end-match-button btn-danger`}>
+		<Button variant="danger" onClick={() => handleEndMatch()} className={`end-match-button`}>
 			<b>Encerrar Partida</b>
 		</Button>
 	);

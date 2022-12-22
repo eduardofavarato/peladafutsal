@@ -30,7 +30,7 @@ function AddPlayer(props: AddPlayerProps) {
 	};
 
 	return (
-		<Button onClick={() => handleAddPlayer()} className="add-player-button btn-primary">
+		<Button variant="primary" onClick={() => handleAddPlayer()} className="add-player-button">
 			<FontAwesomeIcon icon={faUserPlus} />
 		</Button>
 	);

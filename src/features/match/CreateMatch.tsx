@@ -3,13 +3,35 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { userHasAccess } from "../../util/sec";
 import "./CreateMatch.css";
+import { ErrorMessages } from "../../util/constants";
+import MatchService from "../../services/MatchService";
 
 interface CreateMatchProps {
-	createMatch: () => void;
+	onCreateSuccess: () => void;
 }
 
 function CreateMatch(props: CreateMatchProps) {
-	const { createMatch } = props;
+	const { onCreateSuccess } = props;
+
+	const createMatch = () => {
+		const onSuccess = (response: any) => {
+			if (response.status === 200) {
+				onCreateSuccess();
+			}
+		};
+
+		const onError = (response: any) => {
+			if (response.response.status === 400) {
+				if (response.response.data.includes("Max of one match per day")) {
+					alert(ErrorMessages.MAX_ONE_MATCH_PER_DAY);
+				}
+			} else {
+				alert(ErrorMessages.GENERIC);
+			}
+		};
+
+		MatchService.create(onSuccess, onError);
+	};
 
 	const handleCreateMatch = () => {
 		if (userHasAccess()) {
@@ -22,7 +44,7 @@ function CreateMatch(props: CreateMatchProps) {
 	};
 
 	return (
-		<Button onClick={() => handleCreateMatch()} className={`create-match-button btn-primary`}>
+		<Button variant="primary" onClick={() => handleCreateMatch()} className={`create-match-button`}>
 			<FontAwesomeIcon icon={faPlus} /> <b>Criar Partida</b>
 		</Button>
 	);

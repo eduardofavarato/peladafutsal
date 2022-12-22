@@ -4,7 +4,6 @@ import MatchService from "../../services/MatchService";
 import { IMatch } from "../../types/Match";
 import CreateMatch from "./CreateMatch";
 import "./Match.css";
-import { ErrorMessages } from "../../util/constants";
 import MatchDetails from "./MatchDetails";
 import Loading from "../loading/Loading";
 import { extractDateFromMatch } from "../../util/dates";
@@ -32,58 +31,6 @@ function Match() {
 		fetchTodaysMatch();
 	}, []);
 
-	const createMatch = () => {
-		const onSuccess = (response: any) => {
-			if (response.status === 200) {
-				fetchTodaysMatch();
-			}
-		};
-
-		const onError = (response: any) => {
-			if (response.response.status === 400) {
-				if (response.response.data.includes("Max of one match per day")) {
-					alert(ErrorMessages.MAX_ONE_MATCH_PER_DAY);
-				}
-			} else {
-				alert(ErrorMessages.GENERIC);
-			}
-		};
-
-		MatchService.create(onSuccess, onError);
-	};
-
-	const endMatch = () => {
-		if (!match) return;
-
-		const onSuccess = (response: any) => {
-			if (response.status === 200) {
-				fetchTodaysMatch();
-			}
-		};
-
-		const onError = (response: any) => {
-			alert(ErrorMessages.GENERIC);
-		};
-
-		MatchService.end(match.match_id, onSuccess, onError);
-	};
-
-	const reopenMatch = () => {
-		if (!match) return;
-
-		const onSuccess = (response: any) => {
-			if (response.status === 200) {
-				fetchTodaysMatch();
-			}
-		};
-
-		const onError = (response: any) => {
-			alert(ErrorMessages.GENERIC);
-		};
-
-		MatchService.reopen(match.match_id, onSuccess, onError);
-	};
-
 	const Error = () => {
 		return error && <ErrorAlert dismiss={() => setError(false)}></ErrorAlert>;
 	};
@@ -94,7 +41,7 @@ function Match() {
 				<div className="title-element">{`Partida: ${matchDate ? matchDate.formattedDate() : ""}`}</div>
 				{!match && (
 					<div className="title-element title-button">
-						<CreateMatch createMatch={createMatch}></CreateMatch>
+						<CreateMatch onCreateSuccess={fetchTodaysMatch}></CreateMatch>
 					</div>
 				)}
 				{isMatchEnded() && <div className="title-element title-ended">Encerrada</div>}
@@ -118,7 +65,7 @@ function Match() {
 		return (
 			match && (
 				<div className="text-center">
-					<EndMatch endMatch={endMatch}></EndMatch>
+					<EndMatch matchId={match.match_id} onEndMatchSuccess={fetchTodaysMatch}></EndMatch>
 				</div>
 			)
 		);
@@ -126,9 +73,11 @@ function Match() {
 
 	const renderReopenMatch = () => {
 		return (
-			<div className="text-center">
-				<ReopenMatch reopenMatch={reopenMatch}></ReopenMatch>
-			</div>
+			match && (
+				<div className="text-center">
+					<ReopenMatch matchId={match?.match_id} onReopenMatchSuccess={fetchTodaysMatch}></ReopenMatch>
+				</div>
+			)
 		);
 	};
 

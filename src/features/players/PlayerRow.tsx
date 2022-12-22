@@ -24,7 +24,7 @@ function PlayerRow(props: PlayerRowProps) {
 		<tr className="player-row ms-2 me-1x">
 			<td className="player-name-column">{playerName}</td>
 			<td className="remove-button-column">
-				<Button onClick={() => handleRemovePlayer(playerName)} className="float-end btn-danger remove-button">
+				<Button variant="danger" onClick={() => handleRemovePlayer(playerName)} className="float-end remove-button">
 					<FontAwesomeIcon icon={faTrashCan} />
 				</Button>
 			</td>

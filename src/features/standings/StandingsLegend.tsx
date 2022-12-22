@@ -14,7 +14,7 @@ function StandingsLegend() {
 
 	return (
 		<div className="legend-container">
-			<Button onClick={() => toggleLegend()} className="stadings-legend-button btn-secondary">
+			<Button variant="secondary" onClick={() => toggleLegend()} className="stadings-legend-button">
 				<FontAwesomeIcon icon={icon} /> Legenda
 			</Button>
 			{show && (
