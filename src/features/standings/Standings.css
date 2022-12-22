@@ -6,6 +6,7 @@
 .standings-table th,
 .standings-table td {
 	text-align: center;
+	vertical-align: middle;
 	font-size: large;
 }
 

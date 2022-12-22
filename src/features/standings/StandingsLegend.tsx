@@ -19,8 +19,8 @@ function StandingsLegend() {
 			</Button>
 			{show && (
 				<div className="legend-text">
-					<div className="legend-small-view">P: Pontos | V: Vitórias</div>
-					<div className="legend-full-view">P: Pontos | J: Jogos | V: Vitórias | D: Derrotas | E: Empates</div>
+					<div className="legend-small-view">P: Pontos | J: Jogos | V: Vitórias | G: Gols</div>
+					<div className="legend-full-view">P: Pontos | J: Jogos | V: Vitórias | D: Derrotas | E: Empates | G: Gols</div>
 				</div>
 			)}
 		</div>

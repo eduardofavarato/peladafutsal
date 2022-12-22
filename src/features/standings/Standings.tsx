@@ -29,12 +29,12 @@ function Standings() {
 						<th>#</th>
 						<th>NOME</th>
 						<th>P</th>
-						<th className="column-full-view-only">J</th>
+						<th>J</th>
 						<th>V</th>
 						<th className="column-full-view-only">D</th>
 						<th className="column-full-view-only">E</th>
+						<th>G</th>
 						<th className="column-full-view-only">APROVEITAMENTO</th>
-						<th>GOLS</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -45,12 +45,12 @@ function Standings() {
 							</td>
 							<td>{playerStats.player_name}</td>
 							<td>{playerStats.total_points}</td>
-							<td className="column-full-view-only">{playerStats.total_games}</td>
+							<td>{playerStats.total_games}</td>
 							<td>{playerStats.total_wins}</td>
 							<td className="column-full-view-only">{playerStats.total_losses}</td>
 							<td className="column-full-view-only">{playerStats.total_draws}</td>
-							<td className="column-full-view-only">{playerStats.performance}</td>
 							<td>{playerStats.total_goals}</td>
+							<td className="column-full-view-only">{playerStats.performance}</td>
 						</tr>
 					))}
 				</tbody>
