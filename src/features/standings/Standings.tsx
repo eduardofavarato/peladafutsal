@@ -4,6 +4,7 @@ import StandingsService from "../../services/StandingsService";
 import { IPlayerStatsData } from "../../types/Standings";
 import Loading from "../loading/Loading";
 import "./Standings.css";
+import StandingsLegend from "./StandingsLegend";
 
 function Standings() {
 	const [loading, setLoading] = useState<boolean>(true);
@@ -27,12 +28,12 @@ function Standings() {
 					<tr>
 						<th>#</th>
 						<th>NOME</th>
-						<th>PONTOS</th>
-						<th>JOGOS</th>
-						<th>VITÓRIAS</th>
-						<th>DERROTAS</th>
-						<th>EMPATES</th>
-						<th>APROVEITAMENTO</th>
+						<th>P</th>
+						<th className="column-full-view-only">J</th>
+						<th>V</th>
+						<th className="column-full-view-only">D</th>
+						<th className="column-full-view-only">E</th>
+						<th className="column-full-view-only">APROVEITAMENTO</th>
 						<th>GOLS</th>
 					</tr>
 				</thead>
@@ -44,11 +45,11 @@ function Standings() {
 							</td>
 							<td>{playerStats.player_name}</td>
 							<td>{playerStats.total_points}</td>
-							<td>{playerStats.total_games}</td>
+							<td className="column-full-view-only">{playerStats.total_games}</td>
 							<td>{playerStats.total_wins}</td>
-							<td>{playerStats.total_losses}</td>
-							<td>{playerStats.total_draws}</td>
-							<td>{playerStats.performance}</td>
+							<td className="column-full-view-only">{playerStats.total_losses}</td>
+							<td className="column-full-view-only">{playerStats.total_draws}</td>
+							<td className="column-full-view-only">{playerStats.performance}</td>
 							<td>{playerStats.total_goals}</td>
 						</tr>
 					))}
@@ -60,6 +61,7 @@ function Standings() {
 	return (
 		<Container fluid>
 			<div className="title my-3 ms-2">Classificação</div>
+			<StandingsLegend></StandingsLegend>
 			<Loading loading={loading}>{renderStandings()}</Loading>
 		</Container>
 	);

@@ -1,0 +1,32 @@
+/* Smartphones */
+.stadings-legend-button {
+	font-size: small;
+	padding: 2px 10px;
+}
+
+.legend-text {
+	font-size: medium;
+	font-weight: 600;
+	margin-left: 10px;
+}
+
+.legend-container {
+	display: grid;
+	grid-template-columns: 2fr 5fr;
+	margin-bottom: 5px;
+}
+
+.legend-full-view {
+	display: none;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+	.legend-small-view {
+		display: none;
+	}
+
+	.legend-full-view {
+		display: block;
+	}
+}

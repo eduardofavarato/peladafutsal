@@ -3,14 +3,18 @@
 	font-size: x-large;
 }
 
-.standings-table > th,
-.standings-table > td {
+.standings-table th,
+.standings-table td {
 	text-align: center;
 	font-size: large;
 }
 
 .standings-table td:nth-child(2) {
 	text-align: left;
+}
+
+.standings-table .column-full-view-only {
+	display: none;
 }
 
 .top-2 {
@@ -33,5 +37,9 @@
 		font-size: xx-large;
 		font-weight: 600;
 		text-align: left;
+	}
+
+	.standings-table .column-full-view-only {
+		display: table-cell;
 	}
 }
