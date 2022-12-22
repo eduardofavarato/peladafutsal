@@ -1,3 +1,4 @@
+/* Smartphones */
 .loading-wrapper {
 	height: 75vh;
 }
@@ -17,4 +18,8 @@
 	border-top: 10px solid #383636; /* Black */
 	border-radius: 50%;
 	animation: spinner 1.5s linear infinite;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
 }
