@@ -60,7 +60,7 @@ function Standings() {
 
 	return (
 		<Container fluid>
-			<div className="title my-3 ms-2">Classificação</div>
+			<div className="title my-2 ms-2">Classificação</div>
 			<StandingsLegend></StandingsLegend>
 			<Loading loading={loading}>{renderStandings()}</Loading>
 		</Container>

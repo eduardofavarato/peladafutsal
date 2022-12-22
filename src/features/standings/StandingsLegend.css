@@ -22,6 +22,12 @@
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
+	.legend-container {
+		display: grid;
+		grid-template-columns: 1fr 5fr;
+		margin-bottom: 5px;
+	}
+
 	.legend-small-view {
 		display: none;
 	}

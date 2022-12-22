@@ -90,7 +90,7 @@ function Match() {
 
 	const Title = () => {
 		return (
-			<div className="title-container my-3 ms-2">
+			<div className="title-container my-2 ms-2">
 				<div className="title-element">{`Partida: ${matchDate ? matchDate.formattedDate() : ""}`}</div>
 				{!match && (
 					<div className="title-element title-button">
