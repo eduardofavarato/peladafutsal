@@ -97,11 +97,7 @@ function Match() {
 						<CreateMatch createMatch={createMatch}></CreateMatch>
 					</div>
 				)}
-				{isMatchEnded() && (
-					<div className="title-element title-ended">
-						Encerrada
-					</div>
-				)}
+				{isMatchEnded() && <div className="title-element title-ended">Encerrada</div>}
 			</div>
 		);
 	};
@@ -120,9 +116,11 @@ function Match() {
 
 	const renderEndMatch = () => {
 		return (
-			<div className="text-center">
-				<EndMatch endMatch={endMatch}></EndMatch>
-			</div>
+			match && (
+				<div className="text-center">
+					<EndMatch endMatch={endMatch}></EndMatch>
+				</div>
+			)
 		);
 	};
 
