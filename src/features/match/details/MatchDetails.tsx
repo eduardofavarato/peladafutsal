@@ -1,8 +1,8 @@
 import { IMatch } from "../../../types/Match";
 import "./MatchDetails.css";
-import MatchGoals from "./MatchGoals";
-import MatchScore from "./MatchScore";
-import MatchTeams from "./MatchTeams";
+import MatchGoals from "./goals/MatchGoals";
+import MatchScore from "./score/MatchScore";
+import MatchTeams from "./teams/MatchTeams";
 
 interface MatchDetailsProps {
 	match: IMatch;

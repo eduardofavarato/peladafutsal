@@ -1,5 +1,5 @@
 import "./MatchGoals.css";
-import { IMatch, IMatchPlayer } from "../../../types/Match";
+import { IMatch, IMatchPlayer } from "../../../../types/Match";
 import { faFutbol } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

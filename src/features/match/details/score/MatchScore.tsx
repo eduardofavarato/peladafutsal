@@ -1,4 +1,4 @@
-import { IMatch } from "../../../types/Match";
+import { IMatch } from "../../../../types/Match";
 import "./MatchScore.css";
 
 interface MatchScoreProps {

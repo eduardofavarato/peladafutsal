@@ -1,12 +1,12 @@
 import "./MatchTeams.css";
-import { IMatch, IMatchPlayer } from "../../../types/Match";
+import { IMatch, IMatchPlayer } from "../../../../types/Match";
 import { faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from "react-bootstrap";
-import { ErrorMessages } from "../../../util/constants";
-import { userHasAccess } from "../../../util/sec";
-import MatchService from "../../../services/MatchService";
-import { isPlayerNameValid } from "../../players/validations";
+import { ErrorMessages } from "../../../../util/constants";
+import { userHasAccess } from "../../../../util/sec";
+import MatchService from "../../../../services/MatchService";
+import { isPlayerNameValid } from "../../../players/validations";
 import { useState } from "react";
 
 interface MatchTeamsProps {
