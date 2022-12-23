@@ -1,6 +1,6 @@
 import { IMatch } from "../../../types/Match";
 import "./MatchDetails.css";
-import MatchPlayers from "./MatchPlayers";
+import MatchGoals from "./MatchGoals";
 import MatchScore from "./MatchScore";
 import MatchTeams from "./MatchTeams";
 
@@ -12,19 +12,16 @@ interface MatchDetailsProps {
 function MatchDetails(props: MatchDetailsProps) {
 	const { match, refreshPage } = props;
 
-	const firstTeamScore = match.players.filter((player) => player.team === false).reduce((sum, player) => sum + player.goals_scored, 0);
-	const secondTeamScore = match.players.filter((player) => player.team === true).reduce((sum, player) => sum + player.goals_scored, 0);
-
 	return (
 		<div className="details-container">
 			<div className="details-score-container">
-				<MatchScore firstTeamScore={firstTeamScore} secondTeamScore={secondTeamScore}></MatchScore>
+				<MatchScore match={match}></MatchScore>
 			</div>
 			<div className="details-title-container">
 				<MatchTeams match={match} onEditTeamSuccess={refreshPage}></MatchTeams>
 			</div>
 			<div className="details-goals-container">
-				<MatchPlayers match={match}></MatchPlayers>
+				<MatchGoals match={match}></MatchGoals>
 			</div>
 		</div>
 	);

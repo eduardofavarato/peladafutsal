@@ -70,12 +70,24 @@ function MatchTeams(props: MatchTeamsProps) {
 	return (
 		<div className="teams-container">
 			<div className="teams-title">Times</div>
+			<div className="teams-add-player-container">
+				<Button variant="light" onClick={() => addPlayer(false)} className={`teams-add-player-button`}>
+					<div className="team-add-player-icon">
+						<FontAwesomeIcon icon={faPlus} /> Jogador
+					</div>
+				</Button>
+				<Button variant="light" onClick={() => addPlayer(true)} className={`teams-add-player-button`}>
+					<div className="team-add-player-icon">
+						<FontAwesomeIcon icon={faPlus} /> Jogador
+					</div>
+				</Button>
+			</div>
 			<div className="teams-players-container">
 				{firstTeamPlayersSorted.length > 0 && (
 					<div className="teams-team-container ">
 						{firstTeamPlayersSorted.map((player, index) => (
 							<div key={index} className="team-player-container teams-first-team">
-								{!showDelete && <div onClick={() => setShowDelete(true)} className="red-sign"></div>}
+								{!showDelete && <div className="red-sign" onClick={() => setShowDelete(true)}></div>}
 								{showDelete && (
 									<div className="team-remove-player">
 										<Button
@@ -89,7 +101,9 @@ function MatchTeams(props: MatchTeamsProps) {
 										</Button>
 									</div>
 								)}
-								<div className="team-player-name">{player.player_name}</div>
+								<div className="team-player-name" onClick={() => setShowDelete(!showDelete)}>
+									{player.player_name}
+								</div>
 							</div>
 						))}
 					</div>
@@ -112,25 +126,13 @@ function MatchTeams(props: MatchTeamsProps) {
 										</Button>
 									</div>
 								)}
-								<div className="team-player-name">{player.player_name}</div>
+								<div className="team-player-name" onClick={() => setShowDelete(!showDelete)}>
+									{player.player_name}
+								</div>
 							</div>
 						))}
 					</div>
 				)}
-			</div>
-			<div className="teams-add-player-container">
-				<Button variant="light" onClick={() => addPlayer(false)} className={`teams-add-player-button`}>
-					<div className="team-add-player-icon">
-						<FontAwesomeIcon icon={faPlus} />
-					</div>
-					<div className="team-add-player-text">Adicionar</div>
-				</Button>
-				<Button variant="light" onClick={() => addPlayer(true)} className={`teams-add-player-button`}>
-					<div className="team-add-player-icon">
-						<FontAwesomeIcon icon={faPlus} />
-					</div>
-					<div className="team-add-player-text">Adicionar</div>
-				</Button>
 			</div>
 		</div>
 	);

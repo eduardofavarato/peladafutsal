@@ -7,9 +7,6 @@
 	row-gap: 10px;
 }
 
-.details-title-container {
-}
-
 .first-team {
 	background-color: rgba(0, 150, 255, 0.4);
 }
@@ -21,9 +18,6 @@
 .team-title {
 	font-size: x-large;
 	font-weight: 600;
-}
-
-.details-score-container {
 }
 
 .details-goals-container {

@@ -1,12 +1,15 @@
+import { IMatch } from "../../../types/Match";
 import "./MatchScore.css";
 
 interface MatchScoreProps {
-	firstTeamScore: number;
-	secondTeamScore: number;
+	match: IMatch;
 }
 
 function MatchScore(props: MatchScoreProps) {
-	const { firstTeamScore, secondTeamScore } = props;
+	const { match } = props;
+
+	const firstTeamScore = match.players.filter((player) => player.team === false).reduce((sum, player) => sum + player.goals_scored, 0);
+	const secondTeamScore = match.players.filter((player) => player.team === true).reduce((sum, player) => sum + player.goals_scored, 0);
 
 	return (
 		<div className="score-container">

@@ -1,12 +1,30 @@
 /* Smartphones */
 
-.teams-container {
-}
-
 .teams-title {
 	font-size: xx-large;
 	font-weight: 600;
 	text-align: center;
+}
+
+.teams-add-player-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	column-gap: 5px;
+	text-align: center;
+	margin-bottom: 8px;
+}
+
+.teams-add-player-button {
+	color: black;
+	padding: unset;
+	border: none;
+	box-shadow: 0px 0px 2px 1px rgb(0 0 0 / 100%);
+}
+
+.team-add-player-icon {
+	font-size: large;
+	font-weight: 600;
 }
 
 .teams-players-container {
@@ -16,7 +34,6 @@
 	column-gap: 5px;
 	row-gap: 1px;
 	text-align: center;
-	margin-bottom: 8px;
 }
 
 .teams-team-container {
@@ -49,16 +66,13 @@
 	background-color: rgb(210, 0, 0);
 	content: "";
 	height: 100%;
-	width: 5px;
+	width: 2px;
 }
 
 .teams-remove-player-button {
 	border-radius: 0;
 	height: 100%;
 	width: 100%;
-}
-
-.team-remove-player {
 }
 
 .team-remove-player-icon {
@@ -69,32 +83,6 @@
 	font-size: 18px;
 	font-weight: 700;
 	margin-left: 5px;
-}
-
-.teams-add-player-container {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 1fr;
-	column-gap: 5px;
-	text-align: center;
-}
-
-.teams-add-player-button {
-	color: black;
-	padding: unset;
-	border: none;
-	box-shadow: 0px 0px 3px 2px rgb(0 0 0 / 20%);
-}
-
-.team-add-player-icon {
-	font-size: xx-large;
-	font-weight: 600;
-	line-height: 20px;
-}
-
-.team-add-player-text {
-	font-size: large;
-	font-weight: 600;
 }
 
 /* Small devices (landscape phones, 576px and up) */
