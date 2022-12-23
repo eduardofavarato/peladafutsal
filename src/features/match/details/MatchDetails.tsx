@@ -2,6 +2,7 @@ import { IMatch } from "../../../types/Match";
 import "./MatchDetails.css";
 import MatchPlayers from "./MatchPlayers";
 import MatchScore from "./MatchScore";
+import MatchTeams from "./MatchTeams";
 
 interface MatchDetailsProps {
 	match: IMatch;
@@ -11,24 +12,19 @@ interface MatchDetailsProps {
 function MatchDetails(props: MatchDetailsProps) {
 	const { match, refreshPage } = props;
 
-	const firstTeamPlayers = match.players.filter((player) => player.team === false);
-	const firstTeamScore = firstTeamPlayers.reduce((sum, player) => sum + player.goals_scored, 0);
-
-	const secondTeamPlayers = match.players.filter((player) => player.team === true);
-	const secondTeamScore = secondTeamPlayers.reduce((sum, player) => sum + player.goals_scored, 0);
+	const firstTeamScore = match.players.filter((player) => player.team === false).reduce((sum, player) => sum + player.goals_scored, 0);
+	const secondTeamScore = match.players.filter((player) => player.team === true).reduce((sum, player) => sum + player.goals_scored, 0);
 
 	return (
 		<div className="details-container">
 			<div className="details-score-container">
-				<MatchScore
-					matchId={match.match_id}
-					firstTeamScore={firstTeamScore}
-					secondTeamScore={secondTeamScore}
-					onAddPlayerSuccess={refreshPage}
-				></MatchScore>
+				<MatchScore firstTeamScore={firstTeamScore} secondTeamScore={secondTeamScore}></MatchScore>
+			</div>
+			<div className="details-title-container">
+				<MatchTeams match={match} onEditTeamSuccess={refreshPage}></MatchTeams>
 			</div>
 			<div className="details-goals-container">
-				<MatchPlayers match={match} onRemovePlayerSuccess={refreshPage}></MatchPlayers>
+				<MatchPlayers match={match}></MatchPlayers>
 			</div>
 		</div>
 	);

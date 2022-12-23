@@ -27,29 +27,21 @@
 }
 
 .player {
-	font-size: x-large;
-	font-weight: 600;
+	font-size: 20px;
+	font-weight: 700;
 	padding: 5px 10px;
 	display: grid;
-	grid-template-columns: auto 1fr auto;
+	grid-template-columns: 2fr 1fr;
 	grid-template-rows: 1fr;
 	row-gap: 1px;
 	align-items: center;
 }
 
-.remove-player-button {
-	font-size: large;
-	padding-top: 6px;
-	padding-right: 10px;
-	padding-bottom: 4px;
-	padding-left: 10px;
-}
-
 .player-name {
-	margin-left: 10px;
 }
 
 .player-goals {
+	font-size: 20px;
 	text-align: end;
 }
 

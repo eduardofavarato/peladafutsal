@@ -1,5 +1,11 @@
 /* Smartphones */
-.score-container {
+.score-title {
+	font-size: xx-large;
+	font-weight: 600;
+	text-align: center;
+}
+
+.score-teams-score-container {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: 1fr;
@@ -7,30 +13,17 @@
 	text-align: center;
 }
 
-.first-team {
+.score-first-team {
 	background-color: rgba(0, 150, 255, 0.4);
 }
 
-.second-team {
+.score-second-team {
 	background-color: rgba(200, 0, 0, 0.4);
 }
 
-.team-title {
-	font-size: x-large;
-	font-weight: 600;
-}
-
 .team-score {
-	font-size: xxx-large;
+	font-size: 70px;
 	font-weight: 700;
-}
-
-.add-goal-button {
-	font-size: large;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	height: 50px;
-	width: 90%;
 }
 
 /* Small devices (landscape phones, 576px and up) */

@@ -1,0 +1,102 @@
+/* Smartphones */
+
+.teams-container {
+}
+
+.teams-title {
+	font-size: xx-large;
+	font-weight: 600;
+	text-align: center;
+}
+
+.teams-players-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	column-gap: 5px;
+	row-gap: 1px;
+	text-align: center;
+	margin-bottom: 8px;
+}
+
+.teams-team-container {
+	align-items: start;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	row-gap: 1px;
+	height: fit-content;
+}
+
+.teams-first-team {
+	background-color: rgba(0, 150, 255, 0.4);
+}
+
+.teams-second-team {
+	background-color: rgba(200, 0, 0, 0.4);
+}
+
+.team-player-container {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	grid-template-rows: 1fr;
+	align-items: center;
+	text-align: left;
+	height: 38px;
+}
+
+.red-sign {
+	background-color: rgb(210, 0, 0);
+	content: "";
+	height: 100%;
+	width: 5px;
+}
+
+.teams-remove-player-button {
+	border-radius: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.team-remove-player {
+}
+
+.team-remove-player-icon {
+	font-size: 16px;
+}
+
+.team-player-name {
+	font-size: 18px;
+	font-weight: 700;
+	margin-left: 5px;
+}
+
+.teams-add-player-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	column-gap: 5px;
+	text-align: center;
+}
+
+.teams-add-player-button {
+	color: black;
+	padding: unset;
+	border: none;
+	box-shadow: 0px 0px 3px 2px rgb(0 0 0 / 20%);
+}
+
+.team-add-player-icon {
+	font-size: xx-large;
+	font-weight: 600;
+	line-height: 20px;
+}
+
+.team-add-player-text {
+	font-size: large;
+	font-weight: 600;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+}
