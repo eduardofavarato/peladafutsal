@@ -1,10 +1,10 @@
 import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { userHasAccess } from "../../util/sec";
+import { userHasAccess } from "../../../util/sec";
 import "./CreateMatch.css";
-import { ErrorMessages } from "../../util/constants";
-import MatchService from "../../services/MatchService";
+import { ErrorMessages } from "../../../util/constants";
+import MatchService from "../../../services/MatchService";
 
 interface CreateMatchProps {
 	onCreateSuccess: () => void;

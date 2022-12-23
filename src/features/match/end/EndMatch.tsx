@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
-import MatchService from "../../services/MatchService";
-import { ErrorMessages } from "../../util/constants";
-import { userHasAccess } from "../../util/sec";
+import MatchService from "../../../services/MatchService";
+import { ErrorMessages } from "../../../util/constants";
+import { userHasAccess } from "../../../util/sec";
 import "./EndMatch.css";
 
 interface EndMatchProps {

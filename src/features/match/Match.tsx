@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import MatchService from "../../services/MatchService";
 import { IMatch } from "../../types/Match";
-import CreateMatch from "./CreateMatch";
+import CreateMatch from "./create/CreateMatch";
 import "./Match.css";
-import MatchDetails from "./MatchDetails";
+import MatchDetails from "./details/MatchDetails";
 import Loading from "../loading/Loading";
 import { extractDateFromMatch } from "../../util/dates";
 import ErrorAlert from "../error-alert/ErrorAlert";
-import EndMatch from "./EndMatch";
-import ReopenMatch from "./ReopenMatch";
+import EndMatch from "./end/EndMatch";
+import ReopenMatch from "./reopen/ReopenMatch";
 
 function Match() {
 	const [error, setError] = useState<boolean>(false);

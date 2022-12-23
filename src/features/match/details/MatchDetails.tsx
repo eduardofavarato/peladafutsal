@@ -1,4 +1,4 @@
-import { IMatch } from "../../types/Match";
+import { IMatch } from "../../../types/Match";
 import "./MatchDetails.css";
 import MatchTeam from "./MatchTeam";
 

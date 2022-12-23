@@ -1,5 +1,5 @@
-import { IMatchPlayer } from "../../types/Match";
-import { Labels } from "../../util/constants";
+import { IMatchPlayer } from "../../../types/Match";
+import { Labels } from "../../../util/constants";
 import "./MatchTeam.css";
 
 interface MatchTeamProps {
