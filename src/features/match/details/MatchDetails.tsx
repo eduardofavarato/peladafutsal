@@ -1,6 +1,6 @@
 import { IMatch } from "../../../types/Match";
 import "./MatchDetails.css";
-import MatchGoals from "./goals/MatchGoals";
+// import MatchGoals from "./goals/MatchGoals";
 import MatchScore from "./score/MatchScore";
 import MatchTeams from "./teams/MatchTeams";
 
@@ -18,11 +18,11 @@ function MatchDetails(props: MatchDetailsProps) {
 				<MatchScore match={match}></MatchScore>
 			</div>
 			<div className="details-title-container">
-				<MatchTeams match={match} onEditTeamSuccess={refreshPage}></MatchTeams>
+				<MatchTeams match={match} onActionSuccess={refreshPage}></MatchTeams>
 			</div>
-			<div className="details-goals-container">
+			{/* <div className="details-goals-container">
 				<MatchGoals match={match}></MatchGoals>
-			</div>
+			</div> */}
 		</div>
 	);
 }

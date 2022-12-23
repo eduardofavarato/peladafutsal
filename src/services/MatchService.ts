@@ -34,6 +34,10 @@ const addGoal = (matchId: number, data: IMatchGoal, successCallback?: any, error
 	return processApiCall(http.post, `/v1/match/${matchId}/addGoal`, data, successCallback, errorCallback, onFinally);
 };
 
+const removeGoal = (matchId: number, data: IMatchGoal, successCallback?: any, errorCallback?: any, onFinally?: any) => {
+	return processApiCall(http.post, `/v1/match/${matchId}/removeGoal`, data, successCallback, errorCallback, onFinally);
+};
+
 const end = (matchId: number, successCallback?: any, errorCallback?: any, onFinally?: any) => {
 	return processApiCall(http.post, `/v1/match/${matchId}/end`, null, successCallback, errorCallback, onFinally);
 };
@@ -48,6 +52,7 @@ const MatchService = {
 	addPlayer,
 	removePlayer,
 	addGoal,
+	removeGoal,
 	end,
 	reopen,
 };
