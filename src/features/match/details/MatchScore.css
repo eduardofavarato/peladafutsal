@@ -1,0 +1,38 @@
+/* Smartphones */
+.score-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	column-gap: 5px;
+	text-align: center;
+}
+
+.first-team {
+	background-color: rgba(0, 150, 255, 0.4);
+}
+
+.second-team {
+	background-color: rgba(200, 0, 0, 0.4);
+}
+
+.team-title {
+	font-size: x-large;
+	font-weight: 600;
+}
+
+.team-score {
+	font-size: xxx-large;
+	font-weight: 700;
+}
+
+.add-goal-button {
+	font-size: large;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	height: 50px;
+	width: 90%;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+}

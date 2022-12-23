@@ -17,6 +17,10 @@ export interface IAddMatchPlayer {
 	team: boolean;
 }
 
+export interface IRemoveMatchPlayer {
+	player_name: string;
+}
+
 export interface IMatchGoal {
 	player_name: string;
 }

@@ -37,7 +37,7 @@ function Match() {
 
 	const renderTitle = () => {
 		return (
-			<div className="title-container my-2 ms-2">
+			<div className="title-container my-2">
 				<div className="title-element">{`Partida: ${matchDate ? matchDate.formattedDate() : ""}`}</div>
 				{!match && (
 					<div className="title-element title-button">
@@ -58,7 +58,7 @@ function Match() {
 			return;
 		}
 
-		return <MatchDetails match={match}></MatchDetails>;
+		return <MatchDetails match={match} refreshPage={fetchTodaysMatch}></MatchDetails>;
 	};
 
 	const renderEndMatch = () => {
@@ -91,9 +91,11 @@ function Match() {
 				<div className="col">
 					<Loading loading={loading}>
 						{renderError()}
-						{renderTitle()}
-						{renderMatchDetails()}
-						{isMatchEnded() ? renderReopenMatch() : renderEndMatch()}
+						<div className="match-container">
+							{renderTitle()}
+							{renderMatchDetails()}
+							<div className="end-reopen-buttons-container mt-5 mb-1">{isMatchEnded() ? renderReopenMatch() : renderEndMatch()}</div>
+						</div>
 					</Loading>
 				</div>
 			</div>

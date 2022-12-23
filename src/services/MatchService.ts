@@ -1,5 +1,5 @@
 import http from "../http-common";
-import { IAddMatchPlayer } from "../types/Match";
+import { IAddMatchPlayer, IMatchGoal, IRemoveMatchPlayer } from "../types/Match";
 
 const processApiCall = (httpCall: any, url: string, data?: any, successCallback?: any, errorCallback?: any, onFinally?: any) => {
 	httpCall(url, data)
@@ -26,8 +26,12 @@ const addPlayer = (matchId: number, data: IAddMatchPlayer, successCallback?: any
 	return processApiCall(http.post, `/v1/match/${matchId}/addPlayer`, data, successCallback, errorCallback, onFinally);
 };
 
-const addGoal = (matchId: number, successCallback?: any, errorCallback?: any, onFinally?: any) => {
-	return processApiCall(http.post, `/v1/match/${matchId}/addGoal`, null, successCallback, errorCallback, onFinally);
+const removePlayer = (matchId: number, data: IRemoveMatchPlayer, successCallback?: any, errorCallback?: any, onFinally?: any) => {
+	return processApiCall(http.post, `/v1/match/${matchId}/removePlayer`, data, successCallback, errorCallback, onFinally);
+};
+
+const addGoal = (matchId: number, data: IMatchGoal, successCallback?: any, errorCallback?: any, onFinally?: any) => {
+	return processApiCall(http.post, `/v1/match/${matchId}/addGoal`, data, successCallback, errorCallback, onFinally);
 };
 
 const end = (matchId: number, successCallback?: any, errorCallback?: any, onFinally?: any) => {
@@ -42,6 +46,7 @@ const MatchService = {
 	create,
 	getTodaysMatch,
 	addPlayer,
+	removePlayer,
 	addGoal,
 	end,
 	reopen,

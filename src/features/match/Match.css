@@ -8,6 +8,12 @@
 	background-color: darkseagreen !important;
 }
 
+.match-container {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto 1fr auto;
+}
+
 .title-container {
 	font-size: 36px;
 	font-weight: 600;

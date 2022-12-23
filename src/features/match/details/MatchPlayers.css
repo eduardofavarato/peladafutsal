@@ -1,0 +1,58 @@
+/* Smartphones */
+.players-container {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+}
+
+.first-team {
+	background-color: rgba(0, 150, 255, 0.4);
+}
+
+.second-team {
+	background-color: rgba(200, 0, 0, 0.4);
+}
+
+.players-title {
+	font-size: xx-large;
+	font-weight: 600;
+	text-align: center;
+}
+
+.players {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	row-gap: 1px;
+}
+
+.player {
+	font-size: x-large;
+	font-weight: 600;
+	padding: 5px 10px;
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	grid-template-rows: 1fr;
+	row-gap: 1px;
+	align-items: center;
+}
+
+.remove-player-button {
+	font-size: large;
+	padding-top: 6px;
+	padding-right: 10px;
+	padding-bottom: 4px;
+	padding-left: 10px;
+}
+
+.player-name {
+	margin-left: 10px;
+}
+
+.player-goals {
+	text-align: end;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+}
