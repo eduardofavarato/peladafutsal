@@ -22,6 +22,10 @@ const getTodaysMatch = (successCallback?: any, errorCallback?: any, onFinally?: 
 	return processApiCall(http.get, "/v1/match/today", null, (response: any) => successCallback(response.data), errorCallback, onFinally);
 };
 
+const getAvailablePlayers = (matchId: number, successCallback?: any, errorCallback?: any, onFinally?: any) => {
+	return processApiCall(http.get, `/v1/match/${matchId}/availablePlayers`, null, (response: any) => successCallback(response.data), errorCallback, onFinally);
+};
+
 const addPlayer = (matchId: number, data: IAddMatchPlayer, successCallback?: any, errorCallback?: any, onFinally?: any) => {
 	return processApiCall(http.post, `/v1/match/${matchId}/addPlayer`, data, successCallback, errorCallback, onFinally);
 };
@@ -49,6 +53,7 @@ const reopen = (matchId: number, successCallback?: any, errorCallback?: any, onF
 const MatchService = {
 	create,
 	getTodaysMatch,
+	getAvailablePlayers,
 	addPlayer,
 	removePlayer,
 	addGoal,

@@ -1,6 +1,5 @@
 import { IMatch } from "../../../types/Match";
 import "./MatchDetails.css";
-// import MatchGoals from "./goals/MatchGoals";
 import MatchScore from "./score/MatchScore";
 import MatchTeams from "./teams/MatchTeams";
 
@@ -20,9 +19,6 @@ function MatchDetails(props: MatchDetailsProps) {
 			<div className="details-teams-container">
 				<MatchTeams match={match} onActionSuccess={refreshPage}></MatchTeams>
 			</div>
-			{/* <div className="details-goals-container">
-				<MatchGoals match={match}></MatchGoals>
-			</div> */}
 		</div>
 	);
 }
