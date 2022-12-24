@@ -13,7 +13,6 @@ function MatchScore(props: MatchScoreProps) {
 
 	return (
 		<div className="score-container">
-			<div className="score-title">Placar</div>
 			<div className="score-teams-score-container">
 				<div className="score-first-team team-score">{firstTeamScore}</div>
 				<div className="score-second-team team-score">{secondTeamScore}</div>

@@ -13,16 +13,17 @@ interface MatchTeamsProps {
 	onActionSuccess: () => void;
 }
 
+const sortByGoalsAndName = (a: IMatchPlayer, b: IMatchPlayer) => {
+	if (a.goals_scored > b.goals_scored) return -1;
+	else if (a.goals_scored < b.goals_scored) return 1;
+	else return a.player_name < b.player_name ? -1 : 1;
+};
+
 function MatchTeams(props: MatchTeamsProps) {
 	const { match, onActionSuccess } = props;
 
-	const firstTeamPlayersSorted = match.players
-		.filter((player) => player.team === false)
-		.sort((a: IMatchPlayer, b: IMatchPlayer) => (a.player_name < b.player_name ? -1 : 1));
-
-	const secondTeamPlayersSorted = match.players
-		.filter((player) => player.team === true)
-		.sort((a: IMatchPlayer, b: IMatchPlayer) => (a.player_name < b.player_name ? -1 : 1));
+	const firstTeamPlayersSorted = match.players.filter((player) => player.team === false).sort(sortByGoalsAndName);
+	const secondTeamPlayersSorted = match.players.filter((player) => player.team === true).sort(sortByGoalsAndName);
 
 	const addPlayer = (team: boolean) => {
 		const onSuccess = (response: any) => {
@@ -55,29 +56,33 @@ function MatchTeams(props: MatchTeamsProps) {
 				{firstTeamPlayersSorted.length > 0 && (
 					<div className="teams-team-container ">
 						{firstTeamPlayersSorted.map((player, index) => (
-							<MatchPlayer key={index} match={match} player={player} onActionSuccess={onActionSuccess}></MatchPlayer>
+							<MatchPlayer key={player.player_name} match={match} player={player} onActionSuccess={onActionSuccess}></MatchPlayer>
 						))}
-						<div className="teams-add-player-container">
-							<Button variant="light" onClick={() => addPlayer(false)} className={`teams-add-player-button`}>
-								<div className="team-add-player-icon">
-									<FontAwesomeIcon icon={faPlus} /> Jogador
-								</div>
-							</Button>
-						</div>
+						{!match.is_ended && (
+							<div className="teams-add-player-container">
+								<Button variant="light" onClick={() => addPlayer(false)} className={`teams-add-player-button`}>
+									<div className="team-add-player-icon">
+										<FontAwesomeIcon icon={faPlus} /> Jogador
+									</div>
+								</Button>
+							</div>
+						)}
 					</div>
 				)}
 				{secondTeamPlayersSorted.length > 0 && (
 					<div className="teams-team-container">
 						{secondTeamPlayersSorted.map((player, index) => (
-							<MatchPlayer key={index} match={match} player={player} onActionSuccess={onActionSuccess}></MatchPlayer>
+							<MatchPlayer key={player.player_name} match={match} player={player} onActionSuccess={onActionSuccess}></MatchPlayer>
 						))}
-						<div className="teams-add-player-container">
-							<Button variant="light" onClick={() => addPlayer(true)} className={`teams-add-player-button`}>
-								<div className="team-add-player-icon">
-									<FontAwesomeIcon icon={faPlus} /> Jogador
-								</div>
-							</Button>
-						</div>
+						{!match.is_ended && (
+							<div className="teams-add-player-container">
+								<Button variant="light" onClick={() => addPlayer(true)} className={`teams-add-player-button`}>
+									<div className="team-add-player-icon">
+										<FontAwesomeIcon icon={faPlus} /> Jogador
+									</div>
+								</Button>
+							</div>
+						)}
 					</div>
 				)}
 			</div>

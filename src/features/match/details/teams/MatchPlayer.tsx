@@ -86,12 +86,20 @@ function MatchPlayer(props: MatchPlayerProps) {
 	};
 
 	return (
-		<div onClick={() => handlePlayerAction()} className={`team-player-container team-player-button teams-${getTeam(player)}-team`}>
+		<button
+			disabled={match.is_ended}
+			onClick={() => handlePlayerAction()}
+			className={`team-player-container team-player-button teams-${getTeam(player)}-team disabled-${match.is_ended}`}
+		>
 			<div className="team-player-name">{player.player_name}</div>
 			<div className="team-player-goals">
-				{player.goals_scored === 0 ? <FontAwesomeIcon icon={faPlus} /> : Array(player.goals_scored).fill(<FontAwesomeIcon icon={faFutbol} />)}
+				{player.goals_scored === 0 && !match.is_ended ? (
+					<FontAwesomeIcon icon={faPlus} />
+				) : (
+					[...Array(player.goals_scored)].map((e, i) => <FontAwesomeIcon key={i} icon={faFutbol} />)
+				)}
 			</div>
-		</div>
+		</button>
 	);
 }
 

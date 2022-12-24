@@ -17,7 +17,7 @@ function MatchDetails(props: MatchDetailsProps) {
 			<div className="details-score-container">
 				<MatchScore match={match}></MatchScore>
 			</div>
-			<div className="details-title-container">
+			<div className="details-teams-container">
 				<MatchTeams match={match} onActionSuccess={refreshPage}></MatchTeams>
 			</div>
 			{/* <div className="details-goals-container">

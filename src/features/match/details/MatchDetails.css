@@ -1,10 +1,13 @@
 /* Smartphones */
 .details-container {
-	margin-top: 10px;
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: 1fr;
-	row-gap: 10px;
+}
+
+.details-score-container {
+	border-bottom: 1px solid black;
+	padding-bottom: 10px;
 }
 
 .first-team {

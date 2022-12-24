@@ -3,10 +3,10 @@
 .team-player-container {
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: 1fr 1fr;
+	grid-template-rows: 1fr auto;
 	align-items: center;
 	text-align: center;
-	height: 70px;
+	min-height: 70px;
 	margin-top: 3px;
 }
 
@@ -27,6 +27,12 @@
 
 .team-player-goals {
 	font-size: 20px;
+	margin-bottom: 3px;
+}
+
+.disabled-true {
+	background-color: gray;
+	min-height: 35px;
 }
 
 /* Small devices (landscape phones, 576px and up) */
