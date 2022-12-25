@@ -57,38 +57,42 @@ function MatchTeams(props: MatchTeamsProps) {
 		<div className="teams-container">
 			<div className="teams-title">Times</div>
 			<div className="teams-players-container">
-				{firstTeamPlayersSorted.length > 0 && (
-					<div className="teams-team-container ">
-						{firstTeamPlayersSorted.map((player, index) => (
-							<MatchPlayer key={player.player_name} match={match} player={player} onActionSuccess={onActionSuccess}></MatchPlayer>
-						))}
-						{!match.is_ended && (
-							<div className="teams-add-player-container">
-								<Button variant="light" onClick={() => setShowPlayerListFirstTeam(true)} className={`teams-add-player-button`}>
-									<div className="team-add-player-icon">
-										<FontAwesomeIcon icon={faPlus} /> Jogador
-									</div>
-								</Button>
-							</div>
-						)}
-					</div>
-				)}
-				{secondTeamPlayersSorted.length > 0 && (
-					<div className="teams-team-container">
-						{secondTeamPlayersSorted.map((player, index) => (
-							<MatchPlayer key={player.player_name} match={match} player={player} onActionSuccess={onActionSuccess}></MatchPlayer>
-						))}
-						{!match.is_ended && (
-							<div className="teams-add-player-container">
-								<Button variant="light" onClick={() => setShowPlayerListSecondTeam(true)} className={`teams-add-player-button`}>
-									<div className="team-add-player-icon">
-										<FontAwesomeIcon icon={faPlus} /> Jogador
-									</div>
-								</Button>
-							</div>
-						)}
-					</div>
-				)}
+				<div className="teams-team-container ">
+					{firstTeamPlayersSorted.length > 0 && (
+						<div>
+							{firstTeamPlayersSorted.map((player, index) => (
+								<MatchPlayer key={player.player_name} match={match} player={player} onActionSuccess={onActionSuccess}></MatchPlayer>
+							))}
+						</div>
+					)}
+					{!match.is_ended && (
+						<div className="teams-add-player-container">
+							<Button variant="light" onClick={() => setShowPlayerListFirstTeam(true)} className={`teams-add-player-button`}>
+								<div className="team-add-player-icon">
+									<FontAwesomeIcon icon={faPlus} /> Jogador
+								</div>
+							</Button>
+						</div>
+					)}
+				</div>
+				<div className="teams-team-container">
+					{secondTeamPlayersSorted.length > 0 && (
+						<div>
+							{secondTeamPlayersSorted.map((player, index) => (
+								<MatchPlayer key={player.player_name} match={match} player={player} onActionSuccess={onActionSuccess}></MatchPlayer>
+							))}
+						</div>
+					)}
+					{!match.is_ended && (
+						<div className="teams-add-player-container">
+							<Button variant="light" onClick={() => setShowPlayerListSecondTeam(true)} className={`teams-add-player-button`}>
+								<div className="team-add-player-icon">
+									<FontAwesomeIcon icon={faPlus} /> Jogador
+								</div>
+							</Button>
+						</div>
+					)}
+				</div>
 			</div>
 			{showPlayerListFirstTeam && (
 				<PlayersListModal
