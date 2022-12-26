@@ -16,7 +16,12 @@
 	grid-template-rows: 1fr;
 	row-gap: 5px;
 	text-align: center;
+	box-shadow: 0px 0px 2px 0px rgb(0 0 0 / 100%);
+	/* border: 1px solid black; */
+	margin: 10px;
 	padding: 10px;
+	height: 73%;
+	overflow-y: auto;
 }
 
 .players-list-title {
