@@ -13,26 +13,26 @@ function EndMatch(props: EndMatchProps) {
 	const { matchId, onEndMatchSuccess } = props;
 
 	const endMatch = () => {
-		const onSuccess = (response: any) => {
-			if (response.status === 200) {
-				onEndMatchSuccess();
-			}
-		};
+		if (userHasAccess()) {
+			const onSuccess = (response: any) => {
+				if (response.status === 200) {
+					onEndMatchSuccess();
+				}
+			};
 
-		const onError = (response: any) => {
-			alert(ErrorMessages.GENERIC);
-		};
+			const onError = (response: any) => {
+				alert(ErrorMessages.GENERIC);
+			};
 
-		MatchService.end(matchId, onSuccess, onError);
+			MatchService.end(matchId, onSuccess, onError);
+		}
 	};
 
 	const handleEndMatch = () => {
-		if (userHasAccess()) {
-			const userConfirmed = window.confirm("Tem certeza que deseja encerrar a partida?");
+		const userConfirmed = window.confirm("Tem certeza que deseja encerrar a partida?");
 
-			if (userConfirmed) {
-				endMatch();
-			}
+		if (userConfirmed) {
+			endMatch();
 		}
 	};
 

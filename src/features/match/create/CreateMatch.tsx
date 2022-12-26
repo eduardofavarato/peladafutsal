@@ -14,32 +14,32 @@ function CreateMatch(props: CreateMatchProps) {
 	const { onCreateSuccess } = props;
 
 	const createMatch = () => {
-		const onSuccess = (response: any) => {
-			if (response.status === 200) {
-				onCreateSuccess();
-			}
-		};
-
-		const onError = (response: any) => {
-			if (response.response.status === 400) {
-				if (response.response.data.includes("Max of one match per day")) {
-					alert(ErrorMessages.MAX_ONE_MATCH_PER_DAY);
+		if (userHasAccess()) {
+			const onSuccess = (response: any) => {
+				if (response.status === 200) {
+					onCreateSuccess();
 				}
-			} else {
-				alert(ErrorMessages.GENERIC);
-			}
-		};
+			};
 
-		MatchService.create(onSuccess, onError);
+			const onError = (response: any) => {
+				if (response.response.status === 400) {
+					if (response.response.data.includes("Max of one match per day")) {
+						alert(ErrorMessages.MAX_ONE_MATCH_PER_DAY);
+					}
+				} else {
+					alert(ErrorMessages.GENERIC);
+				}
+			};
+
+			MatchService.create(onSuccess, onError);
+		}
 	};
 
 	const handleCreateMatch = () => {
-		if (userHasAccess()) {
-			const userConfirmed = window.confirm("Tem certeza que deseja criar uma nova partida?");
+		const userConfirmed = window.confirm("Tem certeza que deseja criar uma nova partida?");
 
-			if (userConfirmed) {
-				createMatch();
-			}
+		if (userConfirmed) {
+			createMatch();
 		}
 	};
 

@@ -1,5 +1,5 @@
 /* Smartphones */
-.players-list-modal-container {
+.players-actions-modal-container {
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: auto 1fr auto;
@@ -14,35 +14,45 @@
 	overflow-y: auto;
 }
 
-.players-list-title {
+.players-actions-title {
 	font-size: 34px;
 	font-weight: 700;
 	line-height: 70px;
 	text-align: center;
 }
 
-.players-list-container {
+.players-actions-container {
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: 1fr auto auto;
-	row-gap: 10px;
+	row-gap: 15px;
 	text-align: center;
-	box-shadow: 0px 0px 2px 1px rgb(100 100 100 / 100%);
 	margin: 10px;
 	padding: 10px;
 	overflow-y: auto;
 }
 
-.players-list-player-name {
+.players-actions-add-goal-button {
+	height: 100%;
+	margin-bottom: 40px;
+	box-shadow: 0px 0px 4px 1px rgb(100 100 100 / 100%);
+}
+
+.players-add-goal-text {
+	font-size: 32px;
+	font-weight: 700;
+}
+
+.players-actions-text {
 	font-size: 25px;
 	font-weight: 700;
 }
 
-.players-list-cancel {
+.players-actions-cancel {
 	text-align: center;
 }
 
-.players-list-cancel-button {
+.players-actions-cancel-button {
 	font-size: x-large;
 	padding: 10px 50px;
 	background-color: darkred;

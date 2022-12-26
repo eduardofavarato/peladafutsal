@@ -13,26 +13,26 @@ function ReopenMatch(props: ReopenMatchProps) {
 	const { matchId, onReopenMatchSuccess } = props;
 
 	const reopenMatch = () => {
-		const onSuccess = (response: any) => {
-			if (response.status === 200) {
-				onReopenMatchSuccess();
-			}
-		};
+		if (userHasAccess()) {
+			const onSuccess = (response: any) => {
+				if (response.status === 200) {
+					onReopenMatchSuccess();
+				}
+			};
 
-		const onError = (response: any) => {
-			alert(ErrorMessages.GENERIC);
-		};
+			const onError = (response: any) => {
+				alert(ErrorMessages.GENERIC);
+			};
 
-		MatchService.reopen(matchId, onSuccess, onError);
+			MatchService.reopen(matchId, onSuccess, onError);
+		}
 	};
 
 	const handleReopenMatch = () => {
-		if (userHasAccess()) {
-			const userConfirmed = window.confirm("Tem certeza que deseja reabrir a partida?");
+		const userConfirmed = window.confirm("Tem certeza que deseja reabrir a partida?");
 
-			if (userConfirmed) {
-				reopenMatch();
-			}
+		if (userConfirmed) {
+			reopenMatch();
 		}
 	};
 
