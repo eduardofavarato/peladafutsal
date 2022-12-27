@@ -31,8 +31,9 @@
 }
 
 .disabled-true {
-	background-color: gray;
 	min-height: 35px;
+	box-shadow: none;
+	opacity: 0.5;
 }
 
 /* Small devices (landscape phones, 576px and up) */
