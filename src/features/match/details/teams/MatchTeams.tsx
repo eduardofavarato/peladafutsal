@@ -14,6 +14,10 @@ interface MatchTeamsProps {
 	onActionSuccess: () => void;
 }
 
+const sortByName = (a: IMatchPlayer, b: IMatchPlayer) => {
+	return a.player_name < b.player_name ? -1 : 1;
+};
+
 const sortByGoalsAndName = (a: IMatchPlayer, b: IMatchPlayer) => {
 	if (a.goals_scored > b.goals_scored) return -1;
 	else if (a.goals_scored < b.goals_scored) return 1;
@@ -26,8 +30,10 @@ function MatchTeams(props: MatchTeamsProps) {
 
 	const { match, onActionSuccess } = props;
 
-	const firstTeamPlayersSorted = match.players.filter((player) => player.team === false).sort(sortByGoalsAndName);
-	const secondTeamPlayersSorted = match.players.filter((player) => player.team === true).sort(sortByGoalsAndName);
+	const sortMethod = match.is_ended ? sortByGoalsAndName : sortByName;
+
+	const firstTeamPlayersSorted = match.players.filter((player) => player.team === false).sort(sortMethod);
+	const secondTeamPlayersSorted = match.players.filter((player) => player.team === true).sort(sortMethod);
 
 	const addPlayer = (playerName: string, team: boolean) => {
 		const onSuccess = (response: any) => {
