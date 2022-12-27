@@ -29,7 +29,7 @@ SELECT
 	total_wins, 
 	total_losses, 
 	total_draws,
-	COALESCE(CAST(total_points/(NULLIF(total_games,0)*3.00)*100.00 AS NUMERIC(5,2)), 0) AS performance,
+	COALESCE(CAST(total_points/(NULLIF(total_games,0)*3.00)*100.00 AS NUMERIC(5,2)), 0.00) AS performance,
 	total_goals
 FROM (
 	SELECT 
