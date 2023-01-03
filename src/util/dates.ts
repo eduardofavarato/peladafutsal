@@ -6,6 +6,11 @@ export const extractDateFromMatch = (openMatch: IMatch | undefined) => {
 	const matchDate = new Date(openMatch.match_date);
 
 	return {
-		formattedDate: () => `${matchDate.getDate()}/${matchDate.getMonth()}/${matchDate.getFullYear()}`,
+		formattedDate: () =>
+			matchDate.toLocaleDateString("pt-BR", {
+				year: "numeric",
+				month: "2-digit",
+				day: "2-digit",
+			}),
 	};
 };
