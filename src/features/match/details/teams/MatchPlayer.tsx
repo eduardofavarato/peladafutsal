@@ -7,6 +7,7 @@ import { userHasAccess } from "../../../../util/sec";
 import MatchService from "../../../../services/MatchService";
 import { useState } from "react";
 import PlayerActionsModal from "./PlayerActionsModal";
+import tangerine from "../../../../assets/images/tangerine.png";
 
 interface MatchPlayerProps {
 	match: IMatch;
@@ -71,6 +72,14 @@ function MatchPlayer(props: MatchPlayerProps) {
 		}
 	};
 
+	const renderGoal = (index: number) => {
+		if (player.player_name.toUpperCase() === "YURI") {
+			return <img src={tangerine} width="30" height="30" className="img-fluid d-inline-block align-center rounded-circle" alt=""></img>;
+		}
+
+		return <FontAwesomeIcon key={index} icon={faFutbol} />;
+	};
+
 	return (
 		<div>
 			<button
@@ -83,7 +92,7 @@ function MatchPlayer(props: MatchPlayerProps) {
 					{player.goals_scored === 0 && !match.is_ended ? (
 						<FontAwesomeIcon icon={faPlus} />
 					) : (
-						[...Array(player.goals_scored)].map((e, i) => <FontAwesomeIcon key={i} icon={faFutbol} />)
+						[...Array(player.goals_scored)].map((e, i) => renderGoal(i))
 					)}
 				</div>
 			</button>
