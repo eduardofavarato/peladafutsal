@@ -52,6 +52,7 @@ FROM (
 		FROM match
 		INNER JOIN match_player
 			ON match.match_id = match_player.match_id
+			AND match.is_ended = TRUE
 		RIGHT JOIN player
 			ON match_player.player_name = player.player_name
 		GROUP BY player.player_name
