@@ -15,7 +15,7 @@ CREATE TABLE match_player(
    player_name varchar(50) not null,
    team boolean not null, --0 - azul | 1 - vermelho
    goals_scored smallint default 0,
-	unique(match_id, player_name)
+	unique(match_id, player_name),
    foreign key (match_id) references match(match_id),
    foreign key (player_name) references player(player_name)
 );	
