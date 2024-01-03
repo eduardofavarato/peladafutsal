@@ -1,3 +1,6 @@
+CREATE DATABASE pelada;
+CREATE DATABASE pelada_test;
+
 CREATE TABLE player(
 	player_name varchar(50) primary key
 );
@@ -18,7 +21,7 @@ CREATE TABLE match_player(
 	unique(match_id, player_name),
    foreign key (match_id) references match(match_id),
    foreign key (player_name) references player(player_name)
-);	
+);
 
 DROP VIEW IF EXISTS view_standings;
 CREATE VIEW view_standings AS 
