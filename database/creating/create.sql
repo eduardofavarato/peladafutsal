@@ -43,7 +43,6 @@ FROM (
 		total_losses, 
 		total_draws,
 		total_goals
-
 	FROM (
 		SELECT 
 			player.player_name,
@@ -58,6 +57,7 @@ FROM (
 			AND match.is_ended = TRUE
 		RIGHT JOIN player
 			ON match_player.player_name = player.player_name
+		WHERE player.player_name NOT LIKE 'CONVIDADO%'
 		GROUP BY player.player_name
 	) sub_2
 ) sub_1
